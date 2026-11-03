@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru" data-skin="midnight">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JooWoo ✧ для Tavo</title>
+<meta name="description" content="JooWoo — темы, пресеты, плашки и плагины для Tavo. MIDNIGHT LATTE, MOON CAMELLIA, пресет Argon.">
+<meta property="og:title" content="JooWoo ✧ для Tavo">
+<meta property="og:description" content="Темы, пресеты, плашки и плагины для Tavo.">
+<meta property="og:image" content="img/midnight-banner.webp">
+<link rel="icon" href="img/moon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s}catch(e){}</script>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="bar" id="top">
+  <a class="logo" href="#top"><span class="logo-mark">✦</span>JooWoo<small>для Tavo</small></a>
+  <nav class="nav" id="nav">
+    <a href="#themes">Темы</a><a href="#preset">Пресет</a><a href="#plates">Плашки</a><a href="#plugins">Плагины</a><a href="#guide">Гайд</a>
+  </nav>
+  <div class="bar-tools">
+    <div class="skin" role="group" aria-label="Оформление сайта">
+      <button data-set="midnight" title="MIDNIGHT LATTE">☕<span>midnight</span></button>
+      <button data-set="camellia" title="MOON CAMELLIA">✿<span>camellia</span></button>
+    </div>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="kicker">атлас историй · tavo</p>
+    <h1><span>JooWoo</span><em>кофе остыл — а звёзды нет</em></h1>
+    <p class="lead">Темы, пресеты, плашки и плагины для живых ролевых историй в Tavo. Всё написано с нуля, проверено на своих чатах и обновляется.</p>
+    <div class="cta">
+      <a class="btn" href="#themes">Смотреть темы</a>
+      <a class="btn ghost" href="https://t.me/choijoowoo" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    <ul class="stats">
+      <li><b data-count="2">2</b><span>темы</span></li>
+      <li><b data-count="1">1</b><span>пресет</span></li>
+      <li><b data-count="16">16</b><span>плашек</span></li>
+      <li><b data-count="3">3</b><span>плагина</span></li>
+    </ul>
+  </div>
+  <figure class="hero-art">
+    <div class="frame"><img class="art-midnight" src="img/midnight-banner.webp" alt="Ночное окно с чашкой кофе и свечами"><img class="art-camellia" src="img/camellia-cover.webp" alt="Белые камелии на ночной воде"></div>
+    <figcaption><span class="art-midnight">MIDNIGHT LATTE</span><span class="art-camellia">MOON CAMELLIA</span></figcaption>
+  </figure>
+  <a class="scroll" href="#themes" aria-label="Вниз">листай<i></i></a>
+</section>
+
+<!-- ═══ THEMES ═══ -->
+<section class="sec" id="themes">
+  <header class="sec-head"><p class="kicker">i · темы</p><h2>Две ночи на выбор</h2><p>Каждая тема — это оформление чата, своя шапка сообщений и подсветка реплик. Ставятся в Tavo через импорт файла <code>.thm</code>.</p></header>
+
+  <div class="themes">
+    <article class="theme reveal" data-theme="midnight">
+      <div class="theme-media"><div class="carousel" data-carousel>
+        <img src="img/midnight-banner.webp" alt="Шапка MIDNIGHT LATTE">
+        <img src="img/guide-markup.webp" alt="Разметка текста в MIDNIGHT LATTE">
+        <img src="img/plates-1.webp" alt="Плашки MIDNIGHT">
+      </div><button class="car prev" aria-label="Назад">‹</button><button class="car next" aria-label="Вперёд">›</button><div class="dots"></div></div>
+      <div class="theme-body">
+        <h3>MIDNIGHT LATTE</h3>
+        <p class="tag">ночная кофейня · латте · звёздная пыль</p>
+        <ul class="ticks">
+          <li>шапка-дневник: время, место, погода</li>
+          <li>буквица, реплики персиковым маркером, мысли небесным курсивом</li>
+          <li>твои реплики — записка от руки со скотчем</li>
+          <li>16 живых плашек под тему</li>
+        </ul>
+        <p class="hint">Наборы регексов: <b>1 + 3</b></p>
+        <div class="dl"><a class="btn" href="files/joowoo-midnight-latte.thm" download>Тема .thm</a><a class="btn ghost" href="files/joowoo-3-plates-midnight.zip" download>Набор 3</a></div>
+      </div>
+    </article>
+
+    <article class="theme reveal" data-theme="camellia">
+      <div class="theme-media"><div class="carousel" data-carousel>
+        <img src="img/camellia-screen-1.webp" alt="Чат в теме MOON CAMELLIA">
+        <img src="img/camellia-screen-2.webp" alt="Поле ввода MOON CAMELLIA">
+        <img src="img/camellia-bloom.webp" alt="Камелия">
+      </div><button class="car prev" aria-label="Назад">‹</button><button class="car next" aria-label="Вперёд">›</button><div class="dots"></div></div>
+      <div class="theme-body">
+        <h3>MOON CAMELLIA</h3>
+        <p class="tag">ночная вода · дым · лунные камелии</p>
+        <ul class="ticks">
+          <li>сообщения лентой во всю ширину</li>
+          <li>серебро у персонажа, пыльная роза у тебя</li>
+          <li>лунный блик бежит по нити сообщения</li>
+          <li>рябь и лепестки над полем ввода</li>
+        </ul>
+        <p class="hint">Наборы регексов: <b>1 + 4</b>, плашки — классика (2)</p>
+        <div class="dl"><a class="btn" href="files/joowoo-moon-camellia.thm" download>Тема .thm</a><a class="btn ghost" href="files/joowoo-4-camellia-text.zip" download>Набор 4</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ PRESET ═══ -->
+<section class="sec" id="preset">
+  <header class="sec-head"><p class="kicker">ii · пресет</p><h2>Argon 0.0.8</h2><p>Пресет, в котором у персонажа своя жизнь. Он думает перед ответом, не пишет за тебя и не лезет туда, куда его не звали.</p></header>
+  <div class="preset reveal">
+    <div class="pillars">
+      <div><span>◐</span><h4>Стадия близости</h4><p>С незнакомкой он не пишет первым и не ищет встреч. С близкими — может. С парой — полная инициатива.</p></div>
+      <div><span>✎</span><h4>Живой человек</h4><p>Бытовая физика, сбивчивая речь, занятые руки, ошибки восприятия через собственную слабость.</p></div>
+      <div><span>✧</span><h4>Без клише</h4><p>Длинный список штампов, которых модель избегает: от «желваков» до «ночь только начиналась».</p></div>
+      <div><span>☾</span><h4>Думалка</h4><p>План ответа перед текстом: что сейчас между ними, чего он хочет, куда сдвинется сцена.</p></div>
+    </div>
+    <details class="log">
+      <summary>Что нового с 0.0.6</summary>
+      <ul>
+        <li><b>Стадия близости</b> — новый блок: насколько глубоко {{char}} входит в жизнь {{user}}.</li>
+        <li>{{user}} занята — он тоже занят: его работа не стоит на паузе.</li>
+        <li>Ненадёжное восприятие и «занятые руки» в «Глубине и голосе».</li>
+        <li>Бытовая физика и неотполированная речь в «Живом человеке».</li>
+        <li>Тики Argon: не сводить персонажа к одной черте, не тащить лорбук ради галочки, мысль не повторяет сказанное, оставлять место для твоего хода.</li>
+        <li>Анти-клише сильно расширен.</li>
+        <li>Думалка не пишет трекеры черновиком — меньше токенов впустую.</li>
+        <li>Префиллы стоят последними, интим-блоки переписаны аккуратнее.</li>
+      </ul>
+    </details>
+    <div class="dl"><a class="btn" href="files/joowoo-preset-argon-0.0.8.json" download>Скачать пресет</a></div>
+  </div>
+</section>
+
+<!-- ═══ PLATES ═══ -->
+<section class="sec" id="plates">
+  <header class="sec-head"><p class="kicker">iii · плашки</p><h2>Маленькие экраны в тексте</h2><p>Оплата, мессенджеры, такси, доставка, музыка, эфир, чек, записка, карта таро — модель пишет строки, регекс рисует живую плашку. Их можно нажимать.</p></header>
+  <div class="gallery reveal">
+    <figure><img src="img/plates-1.webp" alt="Плашки: деньги и сообщения" loading="lazy"><figcaption>деньги и сообщения</figcaption></figure>
+    <figure><img src="img/plates-2.webp" alt="Плашки: город" loading="lazy"><figcaption>город</figcaption></figure>
+    <figure><img src="img/plates-3.webp" alt="Плашки: голос и бумага" loading="lazy"><figcaption>голос и бумага</figcaption></figure>
+    <figure><img src="img/plates-4.webp" alt="Плашки: эфир и знаки" loading="lazy"><figcaption>эфир и знаки</figcaption></figure>
+  </div>
+  <div class="sets reveal">
+    <div class="set"><b>1</b><h4>Основа</h4><p>Трекеры, маркеры, чистка утечек модели, сторож формата, детектор клише, подсветка реплик. Нужен всегда.</p><a href="files/joowoo-1-osnova.zip" download>скачать</a></div>
+    <div class="set"><b>2</b><h4>Плашки классика</h4><p>Стеклянные плашки в старом стиле. Подходят к любой теме.</p><a href="files/joowoo-2-plates-classic.zip" download>скачать</a></div>
+    <div class="set"><b>3</b><h4>Плашки MIDNIGHT</h4><p>Новые плашки и блоки дневника под MIDNIGHT LATTE.</p><a href="files/joowoo-3-plates-midnight.zip" download>скачать</a></div>
+    <div class="set"><b>4</b><h4>Текст CAMELLIA</h4><p>Шрифты и цвета MOON CAMELLIA внутри сообщений.</p><a href="files/joowoo-4-camellia-text.zip" download>скачать</a></div>
+    <div class="set wide"><b>♡</b><h4>Лорбук плашек</h4><p>Учит модель, когда и как показывать каждую плашку. Включай только то, что бывает в твоём мире.</p><a href="files/joowoo-plates-lorebook-0.0.3.json" download>скачать</a></div>
+  </div>
+</section>
+
+<!-- ═══ PLUGINS ═══ -->
+<section class="sec" id="plugins">
+  <header class="sec-head"><p class="kicker">iv · плагины</p><h2>Инструменты для чата</h2><p>Плагины ставятся в Tavo отдельно. Свежие версии — в Telegram.</p></header>
+  <div class="plugins reveal">
+    <article><span class="pi">❦</span><h4>Холст</h4><p>Картинки по ходу истории через NovelAI или Tensor, несколько LoRA сразу, внешность людей из чата — семья, друзья, работа.</p></article>
+    <article><span class="pi">☾</span><h4>Шёпот</h4><p>Дневник и подсказки к сцене. Работает с героем любого пола.</p></article>
+    <article><span class="pi">✎</span><h4>Пёрышко</h4><p>Облегчённый чат, когда хочется писать, а не настраивать.</p></article>
+  </div>
+  <div class="dl center"><a class="btn ghost" href="https://t.me/choijoowoo" target="_blank" rel="noopener">Плагины в Telegram</a></div>
+</section>
+
+<!-- ═══ GUIDE ═══ -->
+<section class="sec" id="guide">
+  <header class="sec-head"><p class="kicker">v · гайд</p><h2>Как писать и что ставить</h2></header>
+  <div class="guide reveal">
+    <div class="markup">
+      <h4>Разметка</h4>
+      <table>
+        <tr><td><code>"Реплика"</code></td><td><span class="g-say">"реплика"</span> — только прямые кавычки</td></tr>
+        <tr><td><code>*мысль*</code></td><td><em>мысль</em> — персонаж её не слышит</td></tr>
+        <tr><td><code>**жирный**</code></td><td><strong>жирный</strong></td></tr>
+        <tr><td><code>~~зачёркнутый~~</code></td><td><s>зачёркнутый</s></td></tr>
+        <tr><td><code>&gt; цитата</code></td><td><span class="g-quote">цитата</span></td></tr>
+        <tr><td><code>---</code></td><td>разделитель</td></tr>
+      </table>
+      <p class="note">Действие за себя пиши обычным текстом. Цитату и разделитель — отдельной строкой с пустыми строками вокруг.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Импортируй</b> тему, пресет, лорбук плашек и нужные наборы регексов.</li>
+      <li><b>В чате</b> выбери тему и пресет Argon 0.0.8.</li>
+      <li><b>Регексы:</b> MIDNIGHT — 1 + 3, CAMELLIA — 1 + 4 (+2 для плашек).</li>
+      <li><b>В лорбуке</b> включи только те плашки, что есть в твоём мире.</li>
+    </ol>
+    <figure class="guide-img"><img src="img/guide-markup.webp" alt="Как выглядит разметка в теме" loading="lazy"></figure>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <img src="img/camellia.svg" alt="" class="foot-orn">
+  <p class="foot-name">JooWoo <span>✧</span> Tavo</p>
+  <p><a href="https://t.me/choijoowoo" target="_blank" rel="noopener">Telegram @choijoowoo</a></p>
+  <p class="small">Всё на сайте сделано для личных историй в Tavo. Картинки и код — JooWoo.</p>
+  <a class="up" href="#top" aria-label="Наверх">↑</a>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Закрыть">×</button></div>
+<script src="app.js"></script>
+</body>
+</html>
