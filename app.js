@@ -26,6 +26,17 @@
   })();
   setSkin(root.dataset.skin||'midnight');
 
+  /* ── язык: английский в разметке, русский из JW_RU ── */
+  var tr=[].slice.call(document.querySelectorAll('[data-i18n]')),EN={};
+  tr.forEach(function(el){EN[el.dataset.i18n]=el.innerHTML});
+  var lbtn=[].slice.call(document.querySelectorAll('.lang button'));
+  function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
+    tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
+    lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';try{localStorage.setItem('jw-lang',l)}catch(e){}}
+  lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  setLang(root.lang==='ru'?'ru':'en');
+
   /* ── меню на телефоне ── */
   var nav=document.getElementById('nav'),bur=document.getElementById('burger');
   bur.addEventListener('click',function(){var o=nav.classList.toggle('open');bur.setAttribute('aria-expanded',o)});
