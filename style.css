@@ -154,7 +154,7 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 .set a::after{content:' ↓'}
 
 /* плагины */
-.plugins{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plugins{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
 .plugins article{padding:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);text-align:center;transition:transform .3s}
 .plugins article:hover{transform:translateY(-4px)}
 .pi{display:block;width:110px;height:110px;margin:0 auto 6px;border-radius:50%;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 0 5px color-mix(in srgb,var(--bg) 70%,transparent),0 0 0 6px var(--line),0 0 30px var(--glow)}.pi img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.plugins article:hover .pi img{transform:scale(1.08)}
