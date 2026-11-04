@@ -267,3 +267,6 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 .plugins article.best{position:relative;border-color:color-mix(in srgb,var(--a1) 55%,var(--line));box-shadow:0 0 34px -8px var(--glow)}
 .badge{position:absolute;top:14px;right:14px;padding:3px 10px;border-radius:999px;font:500 10.5px var(--sc);letter-spacing:.16em;color:#0d0b0b;background:linear-gradient(120deg,var(--a1),var(--a2))}
 @media (max-width:720px){.pair{grid-template-columns:auto 1fr;padding:20px;align-items:start}.pair-go{grid-column:1/-1;flex-direction:row;justify-content:center}.pair-ic{width:64px;height:64px}.pair-t b{font-size:22px}}
+
+.pdl.alt{margin-left:6px;background:transparent}
+@media (max-width:420px){.pdl.alt{margin-left:0;margin-top:8px}}
