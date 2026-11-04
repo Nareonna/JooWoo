@@ -109,7 +109,7 @@
 
 <!-- ═══ PRESET ═══ -->
 <section class="sec" id="preset">
-  <header class="sec-head"><p class="kicker" data-i18n="pre.kicker">ii · preset</p><h2>Argon 1.0.0</h2><p data-i18n="pre.lead">A preset where the character has a life of his own. He thinks before he answers, never writes for you, remembers what happened and reacts like a person — not like an assistant.</p></header>
+  <header class="sec-head"><p class="kicker" data-i18n="pre.kicker">ii · preset</p><h2>Vesper 1.0.0</h2><p data-i18n="pre.lead">A preset where the character has a life of his own. He thinks before he answers, never writes for you, remembers what happened and reacts like a person — not like an assistant.</p></header>
   <div class="preset reveal">
     <div class="pillars">
       <div><span>☾</span><h4 data-i18n="p1.t">Thinks first</h4><p data-i18n="p1.d">A hidden plan before every reply: what is between you right now, what he wants, how the scene shifts by the last line.</p></div>
@@ -123,7 +123,7 @@
     </div>
     <p class="hint center model" data-i18n="pre.model">Made for <b>Gemini 4 Argon</b>. Other models will run it, but the thinking, pacing and anti-cliché are tuned for Argon.</p>
     <p class="hint center" data-i18n="pre.lang">One preset, two languages. Characters speak the language of their world — in Paris it’s “I told you in French”. Files follow the site language: switch to RU at the top for the Russian version.</p>
-    <div class="dl center"><a class="btn" href="files/joowoo-preset-argon-1.0.0-en.json" data-l="files/joowoo-preset-argon-1.0.0{X}.json" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div>
+    <div class="dl center"><a class="btn" href="files/joowoo-preset-vesper-1.0.0-en.json" data-l="files/joowoo-preset-vesper-1.0.0{X}.json" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div>
   </div>
 </section>
 
@@ -133,7 +133,7 @@
   <div class="setup reveal">
     <div class="st-must"><b data-i18n="st.m1t">In every chat</b><span data-i18n="st.m1">Chat settings → turn on <em>Advanced Rendering</em>. Without it plates, blocks and Canvas stay plain text.</span></div>
     <div class="st-grp"><h4 data-i18n="st.g1">Display settings</h4>
-      <div class="st-row"><div><b>Hide model reasoning</b><p data-i18n="st.g1.0d">Keeps the “author’s draft” visible — the reply plan Argon writes before each message.</p></div><span class="st-v off" data-i18n="st.g1.0v">Off</span></div>
+      <div class="st-row"><div><b>Hide model reasoning</b><p data-i18n="st.g1.0d">Keeps the “author’s draft” visible — the reply plan Vesper writes before each message.</p></div><span class="st-v off" data-i18n="st.g1.0v">Off</span></div>
       <div class="st-row"><div><b>Immersive chat</b><p data-i18n="st.g1.1d">Hides the top bar while you write, so the theme fills the screen. To taste.</p></div><span class="st-v on" data-i18n="st.g1.1v">On</span></div>
       <div class="st-row"><div><b>JavaScript support</b><p data-i18n="st.g1.2d">Plates, blocks and plugins run on JavaScript. Never set it to Off.</p></div><span class="st-v key" data-i18n="st.g1.2v">Auto</span></div>
       <div class="st-row"><div><b>Math rendering</b><p data-i18n="st.g1.3d">Leave as is.</p></div><span class="st-v mute" data-i18n="st.g1.3v">Standard delimiters</span></div>
@@ -144,7 +144,7 @@
       <div class="st-row"><div><b>Apply regex to hidden messages</b><p data-i18n="st.g2.2d">Trackers and model leaks get cleaned in hidden messages too. If the chat lags, turn it off.</p></div><span class="st-v on" data-i18n="st.g2.2v">On</span></div>
       <div class="st-row"><div><b>Auto-clear regeneration history</b><p data-i18n="st.g2.3d">Keeps your swipes after a restart.</p></div><span class="st-v off" data-i18n="st.g2.3v">Off</span></div>
       <div class="st-row"><div><b>Legacy fullscreen plugins</b><p data-i18n="st.g2.4d">JooWoo plugins use the new layout insets.</p></div><span class="st-v off" data-i18n="st.g2.4v">Off</span></div>
-      <div class="st-row"><div><b>Apply legacy long-term memory prompts</b><p data-i18n="st.g2.5d">Argon keeps its own scene memory.</p></div><span class="st-v mute" data-i18n="st.g2.5v">Don’t open</span></div>
+      <div class="st-row"><div><b>Apply legacy long-term memory prompts</b><p data-i18n="st.g2.5d">Vesper keeps its own scene memory.</p></div><span class="st-v mute" data-i18n="st.g2.5v">Don’t open</span></div>
     </div>
     <div class="st-grp"><h4 data-i18n="st.g3">Chat settings · Performance</h4>
       <div class="st-row"><div><b>Disable bubble Gaussian blur</b><p data-i18n="st.g3.0d">The themes draw their own glass. Smoother scrolling, less heat.</p></div><span class="st-v on" data-i18n="st.g3.0v">On</span></div>
@@ -193,7 +193,7 @@
   }
 }</pre>
       <ul class="st-notes">
-        <li data-i18n="st.a1"><code>thinking_level: medium</code> — Argon’s default, the balance of speed and depth. Argon takes <code>low</code>, <code>medium</code> or <code>high</code> (no <code>minimal</code>, and thinking can’t be switched off). For long, tangled scenes try <code>high</code>: slower, but holds threads better.</li>
+        <li data-i18n="st.a1"><code>thinking_level: medium</code> — the model’s default, the balance of speed and depth. Argon takes <code>low</code>, <code>medium</code> or <code>high</code> (no <code>minimal</code>, and thinking can’t be switched off). For long, tangled scenes try <code>high</code>: slower, but holds threads better.</li>
         <li data-i18n="st.a2"><code>include_thoughts: true</code> — needed for the “author’s draft” above the reply.</li>
         <li data-i18n="st.a3"><code>max_tokens: 32768</code> — thinking counts toward this limit too, so don’t lower it below 16000.</li>
         <li data-i18n="st.a4"><code>safety_settings</code> — on Gemini 4 Argon the filters are already off by default; the block doesn’t hurt, it just makes it explicit.</li>
@@ -252,7 +252,7 @@
     </div>
     <ol class="steps">
       <li data-i18n="st1"><b>Import</b> the theme, the preset, the plates lorebook and the regex sets — or one archive with all of it.</li>
-      <li data-i18n="st2"><b>In the chat</b> pick the theme and the Argon 1.0.0 preset.</li>
+      <li data-i18n="st2"><b>In the chat</b> pick the theme and the Vesper 1.0.0 preset.</li>
       <li data-i18n="st3"><b>Regex sets:</b> MIDNIGHT — 1 + 3, CAMELLIA — 1 + 4. Any other theme — 1 + 2.</li>
       <li data-i18n="st4"><b>In the lorebook</b> turn on only the plates your world has.</li>
     </ol>
@@ -264,13 +264,13 @@
 <section class="sec" id="updates">
   <header class="sec-head"><p class="kicker" data-i18n="up.kicker">vii · updates</p><h2 data-i18n="up.title">Notes from the night shift</h2></header>
   <ol class="timeline reveal">
-    <li><time>04.11.2026</time><h4 data-i18n="u1.t">Argon 1.0.0 · MOON CAMELLIA · English version</h4><ul>
+    <li><time>04.11.2026</time><h4 data-i18n="u1.t">Vesper 1.0.0 · MOON CAMELLIA · English version</h4><ul>
       <li data-i18n="u1.1">New theme MOON CAMELLIA and its text set 4.</li>
       <li data-i18n="u1.2">MIDNIGHT: a fresh reply now looks right before reloading — header, drop cap, dialogue color.</li>
       <li data-i18n="u1.3">Dialogue marks moved into set 1, so every theme colors them its own way.</li>
       <li data-i18n="u1.4">Receipt plate: the total stays clean, the note on the back is written by hand below.</li>
       <li data-i18n="u1.9">New “Setup” tab: Tavo settings and API parameters. MIDNIGHT LATTE 1.1.0 and MOON CAMELLIA 1.0.0 now carry a link to the site. All files are on the site only — Telegram has news and spoilers.</li>
-      <li data-i18n="u1.8">The preset is now Argon 1.0.0. Canvas 1.5.7 can be downloaded right here on the site.</li>
+      <li data-i18n="u1.8">The preset is now called Vesper 1.0.0 (formerly Argon) — still made for Gemini 4 Argon. Canvas 1.5.7 can be downloaded right here on the site.</li>
       <li data-i18n="u1.7">Regex sets reshuffled: 1 core (now with the CAMELLIA text), 2 classic plates, 3 MIDNIGHT plates, 4 CAMELLIA plates — all new, made for the theme.</li>
       <li data-i18n="u1.6">English version of everything: preset, plates lorebook, all four regex sets and both themes. Downloads follow the site language.</li>
       <li data-i18n="u1.5">Preset: characters speak the language of their world — in Paris it's «I told you in French», not «in Russian».</li>
@@ -296,7 +296,7 @@
 </footer>
 
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
-<script src="i18n.js?v=9"></script>
+<script src="i18n.js?v=10"></script>
 <script src="app.js?v=8"></script>
 </body>
 </html>
