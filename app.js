@@ -48,21 +48,18 @@
   bur.addEventListener('click',function(){var o=nav.classList.toggle('open');bur.setAttribute('aria-expanded',o)});
   nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');bur.setAttribute('aria-expanded',false)}});
 
-  /* ── карусели ── */
-  [].forEach.call(document.querySelectorAll('[data-carousel]'),function(car){
-    var imgs=[].slice.call(car.querySelectorAll('img')),wrap=car.parentNode,dots=wrap.querySelector('.dots'),i=0,timer;
-    imgs.forEach(function(_,k){var d=document.createElement('i');d.addEventListener('click',function(){go(k)});dots.appendChild(d)});
-    function go(k){i=(k+imgs.length)%imgs.length;imgs.forEach(function(im,j){im.classList.toggle('on',j===i)});[].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i)});clearInterval(timer);timer=setInterval(function(){go(i+1)},5500)}
-    wrap.querySelector('.prev').addEventListener('click',function(){go(i-1)});
-    wrap.querySelector('.next').addEventListener('click',function(){go(i+1)});
-    var sx=null;car.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-    car.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(i+(dx<0?1:-1));sx=null});
-    go(0);
+  /* ── ленты скринов ── */
+  [].forEach.call(document.querySelectorAll('.strip-wrap'),function(w){
+    var s=w.querySelector('.strip'),pv=w.querySelector('.prev'),nx=w.querySelector('.next');
+    function st(){pv.disabled=s.scrollLeft<8;nx.disabled=s.scrollLeft+s.clientWidth>=s.scrollWidth-8}
+    pv.addEventListener('click',function(){s.scrollBy({left:-s.clientWidth*.8,behavior:'smooth'})});
+    nx.addEventListener('click',function(){s.scrollBy({left:s.clientWidth*.8,behavior:'smooth'})});
+    s.addEventListener('scroll',st,{passive:true});addEventListener('resize',st);[].forEach.call(s.querySelectorAll('img'),function(im){im.addEventListener('load',st)});st();
   });
 
   /* ── лайтбокс ── */
   var lb=document.getElementById('lightbox'),lbi=lb.querySelector('img');
-  document.addEventListener('click',function(e){var im=e.target.closest('.carousel img,.gallery img,.guide-img img');if(im){lbi.src=im.src;lbi.alt=im.alt;lb.hidden=false}});
+  document.addEventListener('click',function(e){var im=e.target.closest('.strip img,.gallery img,.guide-img img');if(im){lbi.src=im.src;lbi.alt=im.alt;lb.hidden=false}});
   lb.addEventListener('click',function(e){if(e.target!==lbi)lb.hidden=true});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
 
