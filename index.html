@@ -13,7 +13,7 @@
 <link rel="icon" href="img/moon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 <script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l}catch(e){}</script>
 </head>
 <body>
@@ -123,6 +123,11 @@
     </div>
     <p class="hint center model" data-i18n="pre.model">Made for <b>Gemini 4 Argon</b>. Other models will run it, but the thinking, pacing and anti-cliché are tuned for Argon.</p>
     <p class="hint center" data-i18n="pre.lang">One preset, two languages. Characters speak the language of their world — in Paris it’s “I told you in French”. Files follow the site language: switch to RU at the top for the Russian version.</p>
+    <a class="pair" href="https://hub.tavoai.dev/plugins/package/com.joowoo.shepot" target="_blank" rel="noopener">
+      <span class="pair-ic"><img src="img/plugin-shepot.webp?v=2" alt=""><i>♡</i></span>
+      <span class="pair-t"><small data-i18n="pair.k">best together</small><b><span data-i18n="pair.t">Vesper + Whisper</span></b><span data-i18n="pair.d">Whisper keeps the memory and the plot between scenes — with it the preset opens up completely: threads aren’t lost, promises come back, the story moves on its own.</span></span>
+      <span class="pair-go"><span data-i18n="pair.btn">Get Whisper</span> <em>TavoHub ↗</em></span>
+    </a>
     <div class="dl center"><a class="btn" href="files/joowoo-preset-vesper-1.0.0-en.json" data-l="files/joowoo-preset-vesper-1.0.0{X}.json" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div>
   </div>
 </section>
@@ -225,7 +230,7 @@
   <header class="sec-head"><p class="kicker" data-i18n="pg.kicker">v · plugins</p><h2 data-i18n="pg.title">Tools for the chat</h2><p data-i18n="pg.lead">Plugins are installed in Tavo separately. Canvas can be downloaded right here, the rest live on TavoHub. Update news and spoilers are in Telegram; every file lives here, on the site.</p></header>
   <div class="plugins reveal">
     <article><span class="pi"><img src="img/plugin-holst.webp?v=2" alt="" loading="lazy"></span><h4 data-i18n="pg1.t">Canvas</h4><p data-i18n="pg1.d">Pictures as the story goes — NovelAI or Tensor, several LoRAs at once, looks of people from the chat: family, friends, work.</p><a class="pdl" href="files/joowoo-holst-1.5.7.tpg" download><span data-i18n="pdl">Download</span> <b>1.5.7</b> <small>.tpg · RU / EN</small></a><p class="pnote" data-i18n="pnote">Tavo → Plugins → install from file</p></article>
-    <article><span class="pi"><img src="img/plugin-shepot.webp?v=2" alt="" loading="lazy"></span><h4 data-i18n="pg2.t">Whisper</h4><p data-i18n="pg2.d">A diary and story hints for the scene. Works with a hero of any gender.</p></article>
+    <article class="best"><span class="badge" data-i18n="pg2.b">best with Vesper</span><span class="pi"><img src="img/plugin-shepot.webp?v=2" alt="" loading="lazy"></span><h4 data-i18n="pg2.t">Whisper</h4><p data-i18n="pg2.d">A diary and story hints for the scene. Works with a hero of any gender.</p><a class="pdl" href="https://hub.tavoai.dev/plugins/package/com.joowoo.shepot" target="_blank" rel="noopener"><span data-i18n="pg2.get">Install from</span> <b>TavoHub</b> <small>↗</small></a><p class="pnote" data-i18n="pg2.note">memory and plot for the preset</p></article>
     <article><span class="pi"><img src="img/plugin-perishko.webp?v=2" alt="" loading="lazy"></span><h4 data-i18n="pg3.t">Feather</h4><p data-i18n="pg3.d">A lighter chat for when you want to write, not configure.</p></article>
   </div>
   <div class="hubs reveal">
@@ -269,6 +274,7 @@
       <li data-i18n="u1.2">MIDNIGHT: a fresh reply now looks right before reloading — header, drop cap, dialogue color.</li>
       <li data-i18n="u1.3">Dialogue marks moved into set 1, so every theme colors them its own way.</li>
       <li data-i18n="u1.4">Receipt plate: the total stays clean, the note on the back is written by hand below.</li>
+      <li data-i18n="u1.10">Vesper pairs best with the Whisper plugin — it keeps memory and plot between scenes.</li>
       <li data-i18n="u1.9">New “Setup” tab: Tavo settings and API parameters. MIDNIGHT LATTE 1.1.0 and MOON CAMELLIA 1.0.0 now carry a link to the site. All files are on the site only — Telegram has news and spoilers.</li>
       <li data-i18n="u1.8">The preset is now called Vesper 1.0.0 (formerly Argon) — still made for Gemini 4 Argon. Canvas 1.5.7 can be downloaded right here on the site.</li>
       <li data-i18n="u1.7">Regex sets reshuffled: 1 core (now with the CAMELLIA text), 2 classic plates, 3 MIDNIGHT plates, 4 CAMELLIA plates — all new, made for the theme.</li>
@@ -296,7 +302,7 @@
 </footer>
 
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
-<script src="i18n.js?v=10"></script>
+<script src="i18n.js?v=11"></script>
 <script src="app.js?v=8"></script>
 </body>
 </html>
