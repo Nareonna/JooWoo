@@ -70,6 +70,10 @@
   var so=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
   [].forEach.call(document.querySelectorAll('section[id]'),function(s){so.observe(s)});
 
+  /* ── копировать параметры API ── */
+  [].forEach.call(document.querySelectorAll('.st-copy'),function(b){b.addEventListener('click',function(){var t=document.getElementById('st-json').textContent,done=function(){var o=b.innerHTML;b.textContent=root.lang==='ru'?'Скопировано':'Copied';setTimeout(function(){b.innerHTML=o},1600)};
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,function(){});else{var r=document.createRange();r.selectNodeContents(document.getElementById('st-json'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){}}})});
+
   /* ── кнопка наверх ── */
   var up=document.querySelector('.up');addEventListener('scroll',function(){up.classList.toggle('show',scrollY>700)},{passive:true});
 })();
