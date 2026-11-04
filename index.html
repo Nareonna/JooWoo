@@ -13,7 +13,7 @@
 <link rel="icon" href="img/moon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l}catch(e){}</script>
 </head>
 <body>
@@ -38,26 +38,36 @@
 <main>
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-text">
-    <p class="kicker" data-i18n="hero.kicker">an atlas of stories · tavo</p>
-    <h1><span class="wordmark">JooWoo</span><em data-i18n="hero.tag">the coffee went cold — the stars did not</em></h1>
+  <div class="hero-bg" aria-hidden="true"><img class="art-midnight" src="img/hero-midnight.webp" alt=""><img class="art-camellia" src="img/hero-camellia.webp" alt=""></div>
+  <div class="orbit" aria-hidden="true"><i></i></div>
+  <div class="hero-inner">
+    <p class="kicker hero-kick"><span>✦</span><span data-i18n="hero.kicker">an atlas of stories · tavo</span><span>✦</span></p>
+    <h1 class="wm"><span class="sr">JooWoo</span>
+      <svg viewBox="0 0 1200 330" role="img" aria-label="JooWoo"><defs>
+        <linearGradient id="wmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--wm1)"/><stop offset=".55" style="stop-color:var(--a1)"/><stop offset="1" style="stop-color:var(--a2)"/></linearGradient>
+        <linearGradient id="wml" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+        <text x="600" y="228" text-anchor="middle" class="wm-t">JooWoo</text>
+        <path class="wm-spark" d="M1090 52c3 20 7 24 27 28-20 4-24 8-27 28-3-20-7-24-27-28 20-4 24-8 27-28z"/>
+        <path class="wm-spark s2" d="M196 262c2 11 4 13 15 15-11 2-13 4-15 15-2-11-4-13-15-15 11-2 13-4 15-15z"/>
+        <rect class="wm-line" x="330" y="300" width="540" height="1.4" fill="url(#wml)"/>
+      </svg></h1>
+    <p class="tagline"><em class="t-mid" data-i18n="hero.tag">the coffee went cold — the stars did not</em><em class="t-cam" data-i18n="hero.tag2">a camellia falls whole, not petal by petal</em></p>
     <p class="lead" data-i18n="hero.lead">Themes, presets, UI plates and plugins for living roleplay in Tavo. Everything is written from scratch, tested in real chats and kept up to date.</p>
     <div class="cta">
       <a class="btn" href="#themes" data-i18n="hero.cta">See the themes</a>
       <a class="btn ghost" href="https://t.me/joowoowa" target="_blank" rel="noopener">Telegram</a>
     </div>
-    <ul class="stats">
-      <li><b>2</b><span data-i18n="stat.themes">themes</span></li>
-      <li><b>1</b><span data-i18n="stat.preset">preset</span></li>
-      <li><b>16</b><span data-i18n="stat.plates">plates</span></li>
-      <li><b>3</b><span data-i18n="stat.plugins">plugins</span></li>
-    </ul>
+    <div class="doors" role="group" aria-label="Theme">
+      <button class="door" data-set="midnight"><img src="img/hero-midnight.webp" alt=""><span><b>MIDNIGHT LATTE</b><small data-i18n="door.mid">coffee · stars · candles</small></span></button>
+      <button class="door" data-set="camellia"><img src="img/hero-camellia.webp" alt=""><span><b>MOON CAMELLIA</b><small data-i18n="door.cam">water · smoke · camellias</small></span></button>
+    </div>
   </div>
-  <figure class="hero-art">
-    <div class="frame"><img class="art-midnight" src="img/hero-midnight.webp" alt="Night window with coffee and candles"><img class="art-camellia" src="img/hero-camellia.webp" alt="Camellia on night water"></div>
-    <figcaption><span class="art-midnight">MIDNIGHT LATTE</span><span class="art-camellia">MOON CAMELLIA</span></figcaption>
-  </figure>
-  <a class="scroll" href="#themes" aria-label="Down"><span data-i18n="hero.scroll">scroll</span><i></i></a>
+  <ul class="stats">
+    <li><b>2</b><span data-i18n="stat.themes">themes</span></li>
+    <li><b>1</b><span data-i18n="stat.preset">preset · 2 languages</span></li>
+    <li><b>16</b><span data-i18n="stat.plates">plates</span></li>
+    <li><b>3</b><span data-i18n="stat.plugins">plugins</span></li>
+  </ul>
 </section>
 
 <!-- ═══ THEMES ═══ -->
@@ -213,7 +223,7 @@
 </footer>
 
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
-<script src="i18n.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="i18n.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

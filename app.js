@@ -3,7 +3,7 @@
   var root=document.documentElement;
 
   /* ── переключатель оформления ── */
-  var btns=[].slice.call(document.querySelectorAll('.skin button'));
+  var btns=[].slice.call(document.querySelectorAll('.skin button,.door'));
   function setSkin(s){root.dataset.skin=s;btns.forEach(function(b){b.classList.toggle('on',b.dataset.set===s)});try{localStorage.setItem('jw-skin',s)}catch(e){}sky.reset()}
   btns.forEach(function(b){b.addEventListener('click',function(){setSkin(b.dataset.set)})});
 
