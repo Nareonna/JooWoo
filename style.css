@@ -225,3 +225,8 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 }
 @media (max-width:440px){.pillars,.sets{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.pdl{display:inline-flex;align-items:baseline;gap:6px;margin-top:16px;padding:9px 20px;border-radius:999px;border:1px solid color-mix(in srgb,var(--a1) 60%,var(--line));background:linear-gradient(120deg,color-mix(in srgb,var(--a1) 22%,transparent),color-mix(in srgb,var(--a2) 14%,transparent));color:var(--text);text-decoration:none;font:500 12px var(--sc);letter-spacing:.16em;transition:transform .3s,box-shadow .3s}
+.pdl b{font:italic 700 15px var(--title);letter-spacing:.02em;color:var(--a1)}.pdl small{font:italic 500 12.5px var(--fine);letter-spacing:.04em;color:var(--mute)}
+.pdl:hover{transform:translateY(-2px);box-shadow:0 0 26px var(--glow)}
+.pnote{margin-top:8px!important;font:italic 500 13px var(--fine)!important;color:var(--mute)}
