@@ -3,12 +3,12 @@
   --bg:#0f0b0b;--bg2:#16110f;--card:rgba(28,21,18,.72);--line:rgba(233,197,143,.22);
   --text:#efe6dc;--mute:rgba(239,230,220,.62);--a1:#e6926c;--a2:#9fc6ea;--a3:#e9c58f;--glow:rgba(230,146,108,.35);
   --title:'Playfair Display',Georgia,serif;--serif:'Literata',Georgia,serif;--fine:'Cormorant Garamond',Georgia,serif;--sc:'Cormorant SC',serif;
-  --bgimg:url(img/midnight-bg.webp);--r:18px;
+  --bgimg:url(img/midnight-bg.webp);--bgwide:url(img/wide-midnight-page.webp);--r:18px;
 }
 html[data-skin=camellia]{
   --bg:#05070a;--bg2:#0a0d12;--card:rgba(9,12,17,.72);--line:rgba(185,203,217,.22);
   --text:#e3e9ee;--mute:rgba(227,233,238,.6);--a1:#d6aab6;--a2:#b9cbd9;--a3:#cbd7e0;--glow:rgba(185,203,217,.35);
-  --serif:'Lora',Georgia,serif;--bgimg:url(img/camellia-bg.webp);
+  --serif:'Lora',Georgia,serif;--bgimg:url(img/camellia-bg.webp);--bgwide:url(img/wide-camellia-page.webp);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
@@ -20,7 +20,7 @@ code{font:500 .86em ui-monospace,Consolas,monospace;background:rgba(255,255,255,
 
 /* фон */
 body::before{content:'';position:fixed;inset:0;z-index:-3;background:var(--bgimg) center/cover;opacity:.5;transition:opacity .6s}
-@media (min-width:900px){body::before{background:radial-gradient(60% 50% at 15% 20%,color-mix(in srgb,var(--a1) 12%,transparent),transparent 70%),radial-gradient(50% 45% at 85% 70%,color-mix(in srgb,var(--a2) 12%,transparent),transparent 70%),radial-gradient(40% 35% at 60% 15%,color-mix(in srgb,var(--a3) 7%,transparent),transparent 70%);opacity:1}}
+@media (min-width:900px){body::before{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent),color-mix(in srgb,var(--bg) 35%,transparent) 40%,color-mix(in srgb,var(--bg) 70%,transparent)),var(--bgwide) center/cover no-repeat;opacity:.75}.hero-bg img{object-position:center 50%}}
 .veil{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(120% 80% at 50% 0,transparent 30%,var(--bg) 85%),linear-gradient(180deg,transparent 40%,var(--bg))}
 #sky{position:fixed;inset:0;z-index:-1;pointer-events:none;width:100%;height:100%}
 
