@@ -4,7 +4,7 @@
 
   /* ── переключатель оформления ── */
   var btns=[].slice.call(document.querySelectorAll('.skin button,.door'));
-  function setSkin(s){root.dataset.skin=s;btns.forEach(function(b){b.classList.toggle('on',b.dataset.set===s)});try{localStorage.setItem('jw-skin',s)}catch(e){}sky.reset()}
+  function setSkin(s){root.dataset.skin=s;if(window.jwSwap)jwSwap();btns.forEach(function(b){b.classList.toggle('on',b.dataset.set===s)});try{localStorage.setItem('jw-skin',s)}catch(e){}sky.reset()}
   btns.forEach(function(b){b.addEventListener('click',function(){setSkin(b.dataset.set)})});
 
   /* ── небо: звёзды (midnight) или лепестки и блики (camellia) ── */
@@ -26,6 +26,12 @@
   })();
   setSkin(root.dataset.skin||'midnight');
 
+  /* ── картинки и файлы под язык и тему: {L} — en/ru, {X} — '-en' или '', {S} — тема ── */
+  window.jwSwap=function(){var l=root.lang==='ru'?'ru':'en',sk=root.dataset.skin||'midnight';
+    [].forEach.call(document.querySelectorAll('[data-l],[data-l-en]'),function(el){
+      var v=el.hasAttribute('data-l-en')?el.getAttribute('data-l-'+l):el.getAttribute('data-l').replace('{L}',l).replace('{X}',l==='en'?'-en':'').replace('{S}',sk==='camellia'?'camellia':'midnight');
+      var at=el.tagName==='A'?'href':'src';if(el.getAttribute(at)!==v)el.setAttribute(at,v)})};
+
   /* ── язык: английский в разметке, русский из JW_RU ── */
   var tr=[].slice.call(document.querySelectorAll('[data-i18n]')),EN={};
   tr.forEach(function(el){EN[el.dataset.i18n]=el.innerHTML});
@@ -33,7 +39,7 @@
   function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
     tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
     lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
-    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';try{localStorage.setItem('jw-lang',l)}catch(e){}}
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();try{localStorage.setItem('jw-lang',l)}catch(e){}}
   lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   setLang(root.lang==='ru'?'ru':'en');
 
