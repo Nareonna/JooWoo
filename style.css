@@ -180,7 +180,7 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 .timeline>li{position:relative;margin:0 0 34px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
 .timeline>li::before{content:'✦';position:absolute;left:-37px;top:22px;width:20px;height:20px;display:grid;place-items:center;color:var(--a1);background:var(--bg);font-size:13px}
 .timeline time{font:600 12px var(--sc);letter-spacing:.3em;color:var(--a3)}
-.timeline h4{margin:4px 0 8px;font:italic 700 22px var(--title)}
+.timeline h4{margin:4px 0 2px;font:italic 700 22px var(--title)}
 .timeline ul{margin:0;padding-left:18px;color:var(--mute)}.timeline li li{margin:0 0 6px}
 .hint.center{text-align:center;margin-top:22px}
 
@@ -270,3 +270,6 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 
 .pdl.alt{margin-left:6px;background:transparent}
 @media (max-width:420px){.pdl.alt{margin-left:0;margin-top:8px}}
+
+.timeline .upd-sub{margin:0 0 12px;font:italic 15px var(--title);color:var(--a3);opacity:.85}
+.timeline li li b{color:var(--text);font-weight:700}
