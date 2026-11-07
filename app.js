@@ -32,6 +32,32 @@
       var v=el.hasAttribute('data-l-en')?el.getAttribute('data-l-'+l):el.getAttribute('data-l').replace('{L}',l).replace('{X}',l==='en'?'-en':'').replace('{S}',sk==='camellia'?'camellia':'midnight');
       var at=el.tagName==='A'?'href':'src';if(el.getAttribute(at)!==v)el.setAttribute(at,v)})};
 
+
+  /* ── файлы и версии из files.js: ссылки [data-f], метки [data-v], составы [data-has], таблица #vers ── */
+  window.jwFiles=function(){var F=window.JW_FILES;if(!F)return;var l=root.lang==='ru'?'ru':'en',by={},top=0;
+    function dn(d){var p=d.split('.');return +(p[2]+p[1]+p[0])}
+    F.items.forEach(function(i){by[i.id]=i;top=Math.max(top,dn(i.date))});
+    var T=l==='ru'?{nw:'новое',up:'обновлено',dl:'скачать',inside:'внутри',last:'Последнее обновление',cnt:'новых файлов',g:{preset:'Пресет',regex:'Регексы — шапка, следы, переписка',lore:'Лорбук',theme:'Темы',plugin:'Плагины',bundle:'Архивы «всё сразу»'}}
+                    :{nw:'new',up:'updated',dl:'download',inside:'inside',last:'Last update',cnt:'new files',g:{preset:'Preset',regex:'Regex sets — header, traces, texts',lore:'Lorebook',theme:'Themes',plugin:'Plugins',bundle:'Everything-in-one archives'}};
+    function isNew(i){return dn(i.date)===top}
+    function vtxt(i){return (i.ver?'v'+i.ver+' · ':'')+i.date.slice(0,5)}
+    function short(i){return i.name[l].replace(/^(Плагин|Тема|Регексы|Пресет|Лорбук)\s+/,'').replace(/\s+(plugin|theme|preset|lorebook)$/i,'').replace(/^Regex\s+/,'')+(i.ver?' '+i.ver:'')}
+    [].forEach.call(document.querySelectorAll('[data-f]'),function(a){var i=by[a.dataset.f];if(i)a.setAttribute('href','files/'+i[l])});
+    [].forEach.call(document.querySelectorAll('[data-v]'),function(s){var i=by[s.dataset.v];if(!i)return;s.innerHTML=vtxt(i)+(isNew(i)?'<em>'+T.nw+'</em>':'');s.classList.toggle('new',isNew(i))});
+    [].forEach.call(document.querySelectorAll('[data-has]'),function(p){var i=by[p.dataset.has];if(!i)return;p.innerHTML=T.inside+': '+i.has.map(function(k){var m=by[k];return '<span class="'+(isNew(m)?'new':'')+'">'+short(m)+'</span>'}).join(' · ')});
+    var box=document.getElementById('vers');if(!box)return;
+    var n=F.items.filter(function(i){return isNew(i)&&!i.has}).length,last=F.items.filter(function(i){return dn(i.date)===top})[0].date;
+    var h='<p class="vers-top">'+T.last+': <b>'+last+'</b> · '+T.cnt+': <b>'+n+'</b></p>',groups=[];
+    F.items.forEach(function(i){if(groups.indexOf(i.group)<0)groups.push(i.group)});
+    groups.forEach(function(g){h+='<div class="vg"><h4>'+T.g[g]+'</h4>';
+      F.items.filter(function(i){return i.group===g}).forEach(function(i){
+        var note=i.has?T.inside+': '+i.has.map(function(k){return short(by[k])}).join(' · '):(i.note?i.note[l]:'');
+        h+='<div class="vr'+(isNew(i)?' new':'')+'"><div class="vr-m"><b>'+i.name[l]+'</b><small>'+note+'</small><code>'+i[l]+'</code></div>'+
+           '<div class="vr-s">'+(i.ver?'<span class="vr-v">v'+i.ver+'</span>':'')+'<span class="vr-d">'+(isNew(i)?'<em>'+T.nw+'</em>':T.up)+' '+i.date+'</span></div>'+
+           '<a class="vr-dl" href="files/'+i[l]+'" download aria-label="'+T.dl+'">↓</a></div>'});
+      h+='</div>'});
+    box.innerHTML=h};
+
   /* ── язык: английский в разметке, русский из JW_RU ── */
   var tr=[].slice.call(document.querySelectorAll('[data-i18n]')),EN={};
   tr.forEach(function(el){EN[el.dataset.i18n]=el.innerHTML});
@@ -39,9 +65,17 @@
   function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
     tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
     lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
-    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();try{localStorage.setItem('jw-lang',l)}catch(e){}}
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();jwFiles();if(window.jwTlLab)jwTlLab();try{localStorage.setItem('jw-lang',l)}catch(e){}}
   lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   setLang(root.lang==='ru'?'ru':'en');
+
+
+  /* ── обновления: свежие сверху, старые свёрнуты ── */
+  (function(){var ol=document.querySelector('.timeline');if(!ol)return;var lis=[].slice.call(ol.children),k=3;if(lis.length<=k)return;
+    lis.slice(k).forEach(function(li){li.classList.add('old')});
+    var b=document.createElement('button');b.className='btn ghost tl-more';ol.parentNode.insertBefore(b,ol.nextSibling);
+    function lab(){var ru=root.lang==='ru',o=ol.classList.contains('all');b.textContent=o?(ru?'Свернуть':'Show less'):(ru?'Ранние обновления · ':'Earlier updates · ')+(o?'':lis.length-k)}
+    b.addEventListener('click',function(){ol.classList.toggle('all');lab()});lab();window.jwTlLab=lab})();
 
   /* ── меню на телефоне ── */
   var nav=document.getElementById('nav'),bur=document.getElementById('burger');
