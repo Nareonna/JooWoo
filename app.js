@@ -98,7 +98,7 @@
 
   /* ── лайтбокс ── */
   var lb=document.getElementById('lightbox'),lbi=lb.querySelector('img');
-  document.addEventListener('click',function(e){var im=e.target.closest('.strip img,.gallery img,.guide-img img');if(im){lbi.src=im.src;lbi.alt=im.alt;lb.hidden=false}});
+  document.addEventListener('click',function(e){var im=e.target.closest('.strip img,.gallery img,.guide-img img,.upd-gal img');if(im){lbi.src=im.src;lbi.alt=im.alt;lb.hidden=false}});
   lb.addEventListener('click',function(e){if(e.target!==lbi)lb.hidden=true});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
 
@@ -114,5 +114,7 @@
     if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,function(){});else{var r=document.createRange();r.selectNodeContents(document.getElementById('st-json'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){}}})});
 
   /* ── кнопка наверх ── */
-  var up=document.querySelector('.up');addEventListener('scroll',function(){up.classList.toggle('show',scrollY>700)},{passive:true});
+  var up=document.querySelector('.up');addEventListener('scroll',function(){up.classList.toggle('show',(window.scrollY||document.documentElement.scrollTop)>700)},{passive:true});
+  function toTop(e){e.preventDefault();var sm=!matchMedia('(prefers-reduced-motion: reduce)').matches;try{window.scrollTo({top:0,behavior:sm?'smooth':'auto'})}catch(_){window.scrollTo(0,0)}if(history.replaceState)history.replaceState(null,'',location.pathname+location.search)}
+  up.addEventListener('click',toTop);[].forEach.call(document.querySelectorAll('.logo'),function(l){l.addEventListener('click',toTop)});
 })();

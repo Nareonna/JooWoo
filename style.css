@@ -325,3 +325,17 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 @media (max-width:1000px){.qs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.qs{grid-template-columns:1fr}.news-t{max-width:62vw}}
 .qs-pl .btn{letter-spacing:.08em;padding:11px 14px;gap:6px}.qs-pl .btn>span:first-child{white-space:nowrap}
+
+/* ── 10.11.2026: семь карточек следов, галерея обновления, кнопка наверх ── */
+.gallery{display:flex!important;flex-wrap:wrap;justify-content:center}
+.gallery figure{flex:0 0 calc((100% - 48px)/4)}
+.gallery figure.new::before{content:"new";position:absolute;z-index:2;top:10px;left:10px;padding:4px 9px;border-radius:999px;font:700 10px/1 var(--sc);letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:linear-gradient(120deg,var(--a1),var(--a2));box-shadow:0 4px 14px var(--glow)}
+.upd-gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;margin:12px 0 6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.upd-gal figure{margin:0;flex:0 0 min(240px,62vw);scroll-snap-align:start;border-radius:14px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;transition:transform .3s,border-color .3s}
+.upd-gal figure:hover{transform:translateY(-3px);border-color:var(--a1)}
+.upd-gal img{display:block;width:100%;height:auto}
+.timeline .upd-big{border-color:color-mix(in srgb,var(--a1) 45%,transparent)!important;box-shadow:0 18px 50px -24px var(--glow)}
+.up{z-index:30;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media (max-width:900px){.gallery figure{flex-basis:calc((100% - 16px)/2)}}
+@media (max-width:440px){.gallery figure{flex-basis:100%}}
+html[lang=ru] .gallery figure.new::before{content:"новое"}
