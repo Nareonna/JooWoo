@@ -1,4 +1,4 @@
-/* ═══ JooWoo · сайт ═══ два оформления: midnight (кофейная ночь) и camellia (лунная вода) */
+/* ═══ JooWoo · сайт ═══ три оформления: midnight (кофейная ночь), camellia (лунная вода) и lilac (сиреневый час) */
 :root{
   --bg:#0f0b0b;--bg2:#16110f;--card:rgba(28,21,18,.72);--line:rgba(233,197,143,.22);
   --text:#efe6dc;--mute:rgba(239,230,220,.62);--a1:#e6926c;--a2:#9fc6ea;--a3:#e9c58f;--glow:rgba(230,146,108,.35);
@@ -9,6 +9,11 @@ html[data-skin=camellia]{
   --bg:#05070a;--bg2:#0a0d12;--card:rgba(9,12,17,.72);--line:rgba(185,203,217,.22);
   --text:#e3e9ee;--mute:rgba(227,233,238,.6);--a1:#d6aab6;--a2:#b9cbd9;--a3:#cbd7e0;--glow:rgba(185,203,217,.35);
   --serif:'Lora',Georgia,serif;--bgimg:url(img/camellia-bg.webp);--bgwide:url(img/wide-camellia-page.webp);
+}
+html[data-skin=lilac]{
+  --bg:#17141c;--bg2:#1d1924;--card:rgba(34,30,41,.78);--line:rgba(180,163,207,.2);
+  --text:#d8cfc6;--mute:rgba(216,207,198,.62);--a1:#e0b396;--a2:#b4a3cf;--a3:#c9bcdf;--glow:rgba(180,163,207,.16);
+  --serif:'Lora',Georgia,serif;--bgimg:url(img/lilac-bg.webp);--bgwide:url(img/wide-lilac-page.webp);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
@@ -62,7 +67,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-3;background:var(--bgimg
 .hero-bg{position:absolute;inset:0;z-index:-2}
 .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:opacity 1.2s ease;filter:saturate(1.05)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 45%,color-mix(in srgb,var(--bg) 35%,transparent),color-mix(in srgb,var(--bg) 82%,transparent) 70%,var(--bg) 100%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 60%,transparent),transparent 30%,transparent 65%,var(--bg))}
-html[data-skin=midnight] .art-camellia,html[data-skin=camellia] .art-midnight{opacity:0}
+.hero-bg img{opacity:0}html[data-skin=midnight] .art-midnight,html[data-skin=camellia] .art-camellia,html[data-skin=lilac] .art-lilac{opacity:1}
 .orbit{position:absolute;z-index:-1;left:50%;top:44%;width:min(92vw,820px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px solid color-mix(in srgb,var(--a3) 22%,transparent);animation:spin 60s linear infinite;pointer-events:none}
 .orbit::before{content:'';position:absolute;inset:9%;border-radius:50%;border:1px dashed color-mix(in srgb,var(--a2) 18%,transparent)}
 .orbit i{position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--a3) 60%,transparent 70%);box-shadow:0 0 18px 4px var(--glow)}
@@ -74,9 +79,9 @@ html[data-skin=midnight] .art-camellia,html[data-skin=camellia] .art-midnight{op
 .wm-spark{fill:var(--a3);transform-box:fill-box;transform-origin:center;animation:tw 3.6s ease-in-out infinite}
 .wm-spark.s2{fill:var(--a2);animation-delay:1.4s}
 .wm-line{transform-box:fill-box;transform-origin:center;animation:breath 5s ease-in-out infinite}
-:root{--wm1:#fff4ea}html[data-skin=camellia]{--wm1:#ffffff}
+:root{--wm1:#fff4ea}html[data-skin=camellia]{--wm1:#ffffff}html[data-skin=lilac]{--wm1:#efe5da}
 .tagline{margin:6px 0 0;font:italic 500 clamp(20px,2.6vw,30px) var(--fine);color:var(--text)}
-html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
+.tagline em{display:none}html[data-skin=midnight] .t-mid,html[data-skin=camellia] .t-cam,html[data-skin=lilac] .t-lil{display:inline}
 .lead{color:var(--mute);max-width:600px;margin:16px auto 26px;text-shadow:0 1px 12px var(--bg),0 0 2px var(--bg)}
 .tagline{text-shadow:0 1px 14px var(--bg)}
 .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
@@ -341,3 +346,9 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 html[lang=ru] .gallery figure.new::before{content:"новое"}
 
 .theme[data-theme=lilac] h3{color:#c7b8e0}
+
+/* LILAC: мягче — без вращения и мерцания, спокойное свечение */
+html[data-skin=lilac] .orbit,html[data-skin=lilac] .hero-kick span,html[data-skin=lilac] .wm-spark,html[data-skin=lilac] .wm-line{animation:none}
+html[data-skin=lilac] .orbit i{box-shadow:0 0 10px 2px var(--glow)}
+html[data-skin=lilac] .hero-bg img{filter:saturate(.9) brightness(.9)}
+html[data-skin=lilac] .pill button.on{color:#17141c}

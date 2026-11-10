@@ -11,14 +11,14 @@
   var sky=(function(){
     var c=document.getElementById('sky'),x=c.getContext('2d'),W,H,dpr,parts=[],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=c.width=innerWidth*dpr;H=c.height=innerHeight*dpr}
-    function make(){var cam=root.dataset.skin==='camellia',n=Math.round(Math.min(110,innerWidth/12));parts=[];
+    function make(){var cam=root.dataset.skin==='camellia',lil=root.dataset.skin==='lilac',n=Math.round(Math.min(lil?45:110,innerWidth/(lil?28:12)));parts=[];
       for(var i=0;i<n;i++){var petal=cam&&i%4===0;parts.push({x:Math.random()*W,y:Math.random()*H,r:(petal?3+Math.random()*3:.5+Math.random()*1.4)*dpr,
         s:.2+Math.random()*.8,t:Math.random()*6.28,petal:petal,vx:(Math.random()-.5)*.15*dpr,vy:(cam?.12+Math.random()*.2:.02)*dpr,rot:Math.random()*6.28})}}
-    function draw(){x.clearRect(0,0,W,H);var cam=root.dataset.skin==='camellia';
-      parts.forEach(function(p){p.t+=.012*p.s;var a=.25+.55*(.5+.5*Math.sin(p.t));
+    function draw(){x.clearRect(0,0,W,H);var cam=root.dataset.skin==='camellia',lil=root.dataset.skin==='lilac';
+      parts.forEach(function(p){p.t+=.012*p.s;var a=lil?.18+.16*(.5+.5*Math.sin(p.t*.4)):.25+.55*(.5+.5*Math.sin(p.t));
         if(!reduce){p.x+=p.vx;p.y+=p.vy;p.rot+=.004;if(p.y>H+10){p.y=-10;p.x=Math.random()*W}if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10}
         if(p.petal){x.save();x.translate(p.x,p.y);x.rotate(p.rot);x.globalAlpha=a*.55;x.fillStyle='#d6aab6';x.beginPath();x.ellipse(0,0,p.r*1.6,p.r*.75,0,0,6.28);x.fill();x.restore();}
-        else{x.globalAlpha=a;x.fillStyle=cam?'#dfe8ef':(p.s>.75?'#ffd9a8':'#fff3e6');x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();
+        else{x.globalAlpha=a;x.fillStyle=lil?(p.s>.7?'#e0b396':'#c9bcdf'):cam?'#dfe8ef':(p.s>.75?'#ffd9a8':'#fff3e6');x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();
           if(p.r>1.6*dpr){x.globalAlpha=a*.25;x.beginPath();x.arc(p.x,p.y,p.r*3,0,6.28);x.fill()}}});
       x.globalAlpha=1;if(!reduce)requestAnimationFrame(draw)}
     size();make();draw();addEventListener('resize',function(){size();make();if(reduce)draw()});
@@ -29,7 +29,7 @@
   /* ── картинки и файлы под язык и тему: {L} — en/ru, {X} — '-en' или '', {S} — тема ── */
   window.jwSwap=function(){var l=root.lang==='ru'?'ru':'en',sk=root.dataset.skin||'midnight';
     [].forEach.call(document.querySelectorAll('[data-l],[data-l-en]'),function(el){
-      var v=el.hasAttribute('data-l-en')?el.getAttribute('data-l-'+l):el.getAttribute('data-l').replace('{L}',l).replace('{X}',l==='en'?'-en':'').replace('{S}',sk==='camellia'?'camellia':'midnight');
+      var v=el.hasAttribute('data-l-en')?el.getAttribute('data-l-'+l):el.getAttribute('data-l').replace('{L}',l).replace('{X}',l==='en'?'-en':'').replace('{S}',sk==='camellia'||sk==='lilac'?sk:'midnight');
       var at=el.tagName==='A'?'href':'src';if(el.getAttribute(at)!==v)el.setAttribute(at,v)});if(window.jwFiles)jwFiles()};
 
 
@@ -44,7 +44,7 @@
     function short(i){return i.name[l].replace(/^(Плагин|Тема|Регексы|Пресет|Лорбук)\s+/,'').replace(/\s+(plugin|theme|preset|lorebook)$/i,'').replace(/^Regex\s+/,'').replace(/^\d\s·\s/,'')+(i.ver?' '+i.ver:'')}
     [].forEach.call(document.querySelectorAll('[data-f]'),function(a){var i=by[a.dataset.f];if(i)a.setAttribute('href','files/'+i[l])});
     [].forEach.call(document.querySelectorAll('[data-v]'),function(s){var i=by[s.dataset.v];if(!i)return;s.innerHTML=vtxt(i)+(isNew(i)?'<em>'+T.nw+'</em>':'');s.classList.toggle('new',isNew(i))});
-    var sk=root.dataset.skin==='camellia'?1:0;
+    var sk=root.dataset.skin==='camellia'?1:root.dataset.skin==='lilac'?2:0;
     [].forEach.call(document.querySelectorAll('[data-fsk]'),function(a){var i=by[a.dataset.fsk.split('|')[sk]];if(i)a.setAttribute('href','files/'+i[l])});
     [].forEach.call(document.querySelectorAll('[data-hsk]'),function(p){p.dataset.has=p.dataset.hsk.split('|')[sk]});
     var nw=document.getElementById('news');if(nw){var fresh=F.items.filter(function(i){return isNew(i)&&!i.has&&i.ver}),last=fresh.length?fresh[0].date:'';

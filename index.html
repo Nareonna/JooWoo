@@ -13,7 +13,7 @@
 <link rel="icon" href="img/moon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=19">
+<link rel="stylesheet" href="style.css?v=61">
 <script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l}catch(e){}</script>
 </head>
 <body>
@@ -30,6 +30,7 @@
     <div class="pill skin" role="group" aria-label="Site look">
       <button data-set="midnight" title="MIDNIGHT LATTE">☕<span>midnight</span></button>
       <button data-set="camellia" title="MOON CAMELLIA">✿<span>camellia</span></button>
+      <button data-set="lilac" title="LILAC HOUR">☾<span>lilac</span></button>
     </div>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
@@ -38,7 +39,7 @@
 <main>
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true"><picture><source media="(min-width:900px)" srcset="img/wide-midnight-hero.webp"><img class="art-midnight" src="img/hero-midnight.webp" alt=""></picture><picture><source media="(min-width:900px)" srcset="img/wide-camellia-hero.webp"><img class="art-camellia" src="img/hero-camellia.webp" alt=""></picture></div>
+  <div class="hero-bg" aria-hidden="true"><picture><source media="(min-width:900px)" srcset="img/wide-midnight-hero.webp"><img class="art-midnight" src="img/hero-midnight.webp" alt=""></picture><picture><source media="(min-width:900px)" srcset="img/wide-camellia-hero.webp"><img class="art-camellia" src="img/hero-camellia.webp" alt=""></picture><picture><source media="(min-width:900px)" srcset="img/wide-lilac-hero.webp"><img class="art-lilac" src="img/hero-lilac.webp" alt=""></picture></div>
   <div class="orbit" aria-hidden="true"><i></i></div>
   <div class="hero-inner">
     <a class="news" id="news" href="#files"></a>
@@ -52,7 +53,7 @@
         <path class="wm-spark s2" d="M196 262c2 11 4 13 15 15-11 2-13 4-15 15-2-11-4-13-15-15 11-2 13-4 15-15z"/>
         <rect class="wm-line" x="330" y="300" width="540" height="1.4" fill="url(#wml)"/>
       </svg></h1>
-    <p class="tagline"><em class="t-mid" data-i18n="hero.tag">the coffee went cold — the stars did not</em><em class="t-cam" data-i18n="hero.tag2">a camellia falls whole, not petal by petal</em></p>
+    <p class="tagline"><em class="t-mid" data-i18n="hero.tag">the coffee went cold — the stars did not</em><em class="t-cam" data-i18n="hero.tag2">a camellia falls whole, not petal by petal</em><em class="t-lil" data-i18n="hero.tag3">the lilac hour, with nowhere left to be</em></p>
     <p class="lead" data-i18n="hero.lead">Themes, presets, traces and plugins for living roleplay in Tavo. Everything is written from scratch, tested in real chats and kept up to date.</p>
     <div class="cta">
       <a class="btn" href="#themes" data-i18n="hero.cta">See the themes</a>
@@ -61,6 +62,7 @@
     <div class="doors" role="group" aria-label="Theme">
       <button class="door" data-set="midnight"><img src="img/hero-midnight.webp" alt=""><span><b>MIDNIGHT LATTE</b><small data-i18n="door.mid">coffee · stars · candles</small></span></button>
       <button class="door" data-set="camellia"><img src="img/hero-camellia.webp" alt=""><span><b>MOON CAMELLIA</b><small data-i18n="door.cam">water · smoke · camellias</small></span></button>
+      <button class="door" data-set="lilac"><img src="img/door-lilac.webp" alt=""><span><b>LILAC HOUR</b><small data-i18n="door.lil">dusk · lavender · lamplight</small></span></button>
     </div>
   </div>
   <ul class="stats">
@@ -76,9 +78,9 @@
   <header class="sec-head"><p class="kicker" data-i18n="qs.kicker">✦ quick start</p><h2 data-i18n="qs.title">Four steps and you're in</h2></header>
   <ol class="qs reveal">
     <li><b>1</b><h4 data-i18n="qs.1t">Pick a night</h4><p data-i18n="qs.1d">The whole site switches with it — screenshots, files, colours.</p>
-      <div class="qs-pick"><button class="qs-skin" data-set="midnight">☕ MIDNIGHT LATTE</button><button class="qs-skin" data-set="camellia">✿ MOON CAMELLIA</button></div></li>
+      <div class="qs-pick"><button class="qs-skin" data-set="midnight">☕ MIDNIGHT LATTE</button><button class="qs-skin" data-set="camellia">✿ MOON CAMELLIA</button><button class="qs-skin" data-set="lilac">☾ LILAC HOUR</button></div></li>
     <li><b>2</b><h4 data-i18n="qs.2t">Take everything in one archive</h4><p data-i18n="qs.2d">Theme, regex sets, the traces lorebook and the Vesper preset — matched to each other.</p>
-      <a class="btn" href="files/joowoo-midnight-all-en.zip" data-fsk="all1|all2" download data-i18n="qs.2b">Download the archive</a><p class="vline" data-hsk="all1|all2"></p></li>
+      <a class="btn" href="files/joowoo-midnight-all-en.zip" data-fsk="all1|all2|all3" download data-i18n="qs.2b">Download the archive</a><p class="vline" data-hsk="all1|all2|all3"></p></li>
     <li><b>3</b><h4 data-i18n="qs.3t">Import into Tavo</h4><p data-i18n="qs.3d">Theme — in appearance, regex sets 1 and your theme's set — in regex, the lorebook and the preset — each in its own place. Then turn on Advanced Rendering in the chat settings.</p>
       <a class="btn ghost" href="#setup" data-i18n="qs.3b">Tavo settings</a></li>
     <li><b>4</b><h4 data-i18n="qs.4t">Add the plugins</h4><p data-i18n="qs.4d">Whisper keeps memory and threads, Stained Glass draws the pictures.</p>
@@ -132,7 +134,7 @@
         <div class="theme-dl"><p class="hint" data-i18n="lil.sets">Regex sets: <b>1 + 4</b></p>
         <div class="dl"><a class="btn" href="files/joowoo-lilac-all-en.zip" data-f="all3" download data-i18n="dl.all">Everything in one archive</a><a class="btn ghost" href="files/joowoo-lilac-hour-1.0.0-en.thm" data-f="thm3" download data-i18n="dl.theme">Theme only</a></div><p class="vline" data-has="all3"></p></div>
       </div>
-      <div class="strip-wrap"><div class="strip" tabindex="0"><figure><img data-l="img/chat-lilac-{L}-1.webp" src="img/chat-lilac-en-1.webp" alt="" loading="lazy"><figcaption data-i18n="f1">the reply opens</figcaption></figure><figure><img data-l="img/plates-lilac-1-{L}.webp" src="img/plates-lilac-1-en.webp" alt="" loading="lazy"><figcaption data-i18n="g1">snapshot & note</figcaption></figure><figure><img data-l="img/plates-lilac-2-{L}.webp" src="img/plates-lilac-2-en.webp" alt="" loading="lazy"><figcaption data-i18n="g2">ticket & trail</figcaption></figure><figure><img data-l="img/plates-lilac-3-{L}.webp" src="img/plates-lilac-3-en.webp" alt="" loading="lazy"><figcaption data-i18n="g3">pockets & unsent</figcaption></figure><figure><img data-l="img/plates-lilac-4-{L}.webp" src="img/plates-lilac-4-en.webp" alt="" loading="lazy"><figcaption data-i18n="g4">rumour & credits</figcaption></figure><figure><img data-l="img/plates-lilac-5-{L}.webp" src="img/plates-lilac-5-en.webp" alt="" loading="lazy"><figcaption data-i18n="g5">to-do & receipt</figcaption></figure><figure><img data-l="img/plates-lilac-6-{L}.webp" src="img/plates-lilac-6-en.webp" alt="" loading="lazy"><figcaption data-i18n="g6">story & route</figcaption></figure><figure><img data-l="img/plates-lilac-7-{L}.webp" src="img/plates-lilac-7-en.webp" alt="" loading="lazy"><figcaption data-i18n="g7">forecast & lining</figcaption></figure><figure class="art"><img src="img/lilac-cover.webp" alt="Lilac hour" loading="lazy"><figcaption data-i18n="f5">the theme’s art</figcaption></figure></div><button class="sbtn prev" aria-label="Back">‹</button><button class="sbtn next" aria-label="Next">›</button></div>
+      <div class="strip-wrap"><div class="strip" tabindex="0"><figure><img data-l="img/chat-lilac-{L}-1.webp" src="img/chat-lilac-en-1.webp" alt="" loading="lazy"><figcaption data-i18n="f1">the reply opens</figcaption></figure><figure><img data-l="img/plates-lilac-1-{L}.webp" src="img/plates-lilac-1-en.webp" alt="" loading="lazy"><figcaption data-i18n="g1">snapshot & note</figcaption></figure><figure><img data-l="img/plates-lilac-2-{L}.webp" src="img/plates-lilac-2-en.webp" alt="" loading="lazy"><figcaption data-i18n="g2">ticket & trail</figcaption></figure><figure><img data-l="img/plates-lilac-3-{L}.webp" src="img/plates-lilac-3-en.webp" alt="" loading="lazy"><figcaption data-i18n="g3">pockets & unsent</figcaption></figure><figure><img data-l="img/plates-lilac-4-{L}.webp" src="img/plates-lilac-4-en.webp" alt="" loading="lazy"><figcaption data-i18n="g4">rumour & credits</figcaption></figure><figure><img data-l="img/plates-lilac-5-{L}.webp" src="img/plates-lilac-5-en.webp" alt="" loading="lazy"><figcaption data-i18n="g5">to-do & receipt</figcaption></figure><figure><img data-l="img/plates-lilac-6-{L}.webp" src="img/plates-lilac-6-en.webp" alt="" loading="lazy"><figcaption data-i18n="g6">story & route</figcaption></figure><figure><img data-l="img/plates-lilac-7-{L}.webp" src="img/plates-lilac-7-en.webp" alt="" loading="lazy"><figcaption data-i18n="g7">forecast & lining</figcaption></figure><figure class="art"><img src="img/lilac-moth.webp" alt="" loading="lazy"><figcaption data-i18n="f5">the theme’s art</figcaption></figure><figure class="art"><img src="img/lilac-cover.webp" alt="Lilac hour" loading="lazy"><figcaption data-i18n="f5">the theme’s art</figcaption></figure></div><button class="sbtn prev" aria-label="Back">‹</button><button class="sbtn next" aria-label="Next">›</button></div>
     </article>
   </div>
 </section>
@@ -400,7 +402,7 @@
 
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
 <script src="files.js?v=2"></script>
-<script src="i18n.js?v=34"></script>
-<script src="app.js?v=12"></script>
+<script src="i18n.js?v=61"></script>
+<script src="app.js?v=61"></script>
 </body>
 </html>
