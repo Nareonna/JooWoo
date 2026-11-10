@@ -347,8 +347,16 @@ html[lang=ru] .gallery figure.new::before{content:"новое"}
 
 .theme[data-theme=lilac] h3{color:#c7b8e0}
 
-/* LILAC: мягче — без вращения и мерцания, спокойное свечение */
-html[data-skin=lilac] .orbit,html[data-skin=lilac] .hero-kick span,html[data-skin=lilac] .wm-spark,html[data-skin=lilac] .wm-line{animation:none}
-html[data-skin=lilac] .orbit i{box-shadow:0 0 10px 2px var(--glow)}
-html[data-skin=lilac] .hero-bg img{filter:saturate(.9) brightness(.9)}
+/* LILAC: сумерки, мотыльки и свет лампы */
+html[data-skin=lilac] .orbit{animation-duration:140s;border-color:color-mix(in srgb,var(--a2) 26%,transparent)}
+html[data-skin=lilac] .orbit i{background:radial-gradient(circle at 35% 35%,#fff6ea,var(--a1) 55%,transparent 70%);box-shadow:0 0 16px 5px rgba(224,179,150,.3)}
+html[data-skin=lilac] .hero-kick span,html[data-skin=lilac] .wm-spark{animation-duration:7s}
+html[data-skin=lilac] .hero-bg img{filter:saturate(.95)}
+html[data-skin=lilac] .hero-bg::after{background:radial-gradient(75% 62% at 50% 45%,color-mix(in srgb,var(--bg) 18%,transparent),color-mix(in srgb,var(--bg) 62%,transparent) 72%,var(--bg) 100%),linear-gradient(180deg,color-mix(in srgb,var(--bg) 50%,transparent),transparent 28%,transparent 70%,var(--bg))}
+html[data-skin=lilac] .veil{background:radial-gradient(60% 45% at 88% 100%,rgba(224,179,150,.11),transparent 70%),radial-gradient(55% 40% at 8% 0,rgba(180,163,207,.13),transparent 70%),radial-gradient(120% 80% at 50% 0,transparent 30%,var(--bg) 88%),linear-gradient(180deg,transparent 45%,var(--bg))}
+html[data-skin=lilac] .wm svg{filter:drop-shadow(0 0 22px rgba(224,179,150,.2))}
+html[data-skin=lilac] .theme,html[data-skin=lilac] .set{background:linear-gradient(165deg,rgba(180,163,207,.07),transparent 42%),var(--card)}
+html[data-skin=lilac] .door.on{box-shadow:0 0 0 1px var(--a1),0 10px 30px rgba(224,179,150,.18)}
 html[data-skin=lilac] .pill button.on{color:#17141c}
+html[data-skin=lilac] ::selection{background:var(--a2);color:var(--bg)}
+html[data-skin=lilac] #sky{z-index:5}
