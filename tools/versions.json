@@ -119,13 +119,13 @@
     "ru": "Плагин Шёпот",
     "en": "Whisper plugin"
    },
-   "ver": "1.1.0",
-   "date": "10.11.2026",
-   "ru": "joowoo-shepot-1.1.0.tpg",
-   "en": "joowoo-shepot-1.1.0.tpg",
+   "ver": "1.1.1",
+   "date": "11.11.2026",
+   "ru": "joowoo-shepot-1.1.1.tpg",
+   "en": "joowoo-shepot-1.1.1.tpg",
    "note": {
-    "ru": "сроки, досье на людей, умная память",
-    "en": "deadlines, dossiers on people, smarter memory"
+    "ru": "сроки, досье, своя модель для записи памяти",
+    "en": "deadlines, dossiers, your own model for memory"
    }
   },
   {
