@@ -65,6 +65,22 @@
    }
   },
   {
+   "id": "set4",
+   "group": "regex",
+   "name": {
+    "ru": "Регексы 4 · LILAC",
+    "en": "Regex 4 · LILAC"
+   },
+   "ver": "2.2.0",
+   "date": "11.11.2026",
+   "ru": "joowoo-4-lilac-2.2.0.zip",
+   "en": "joowoo-4-lilac-2.2.0-en.zip",
+   "note": {
+    "ru": "шапка, 14 следов и переписка для LILAC HOUR",
+    "en": "header, 14 traces and texts for LILAC HOUR"
+   }
+  },
+  {
    "id": "lore",
    "group": "lore",
    "name": {
@@ -110,6 +126,22 @@
    "note": {
     "ru": "серебро, пыльная роза, ночная вода",
     "en": "silver, dusty rose, night water"
+   }
+  },
+  {
+   "id": "thm3",
+   "group": "theme",
+   "name": {
+    "ru": "Тема LILAC HOUR",
+    "en": "LILAC HOUR theme"
+   },
+   "ver": "1.0.0",
+   "date": "11.11.2026",
+   "ru": "joowoo-lilac-hour-1.0.0.thm",
+   "en": "joowoo-lilac-hour-1.0.0-en.thm",
+   "note": {
+    "ru": "мягкая ночная: сирень, лаванда, свет лампы",
+    "en": "soft night theme: lilac, lavender, lamplight"
    }
   },
   {
@@ -210,6 +242,25 @@
     "set1",
     "set3",
     "thm2",
+    "lore",
+    "preset"
+   ]
+  },
+  {
+   "id": "all3",
+   "group": "bundle",
+   "name": {
+    "ru": "Всё сразу · LILAC",
+    "en": "Everything · LILAC"
+   },
+   "ver": "",
+   "date": "11.11.2026",
+   "ru": "joowoo-lilac-all.zip",
+   "en": "joowoo-lilac-all-en.zip",
+   "has": [
+    "set1",
+    "set4",
+    "thm3",
     "lore",
     "preset"
    ]

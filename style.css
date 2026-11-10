@@ -339,3 +339,5 @@ html[data-skin=midnight] .t-cam,html[data-skin=camellia] .t-mid{display:none}
 @media (max-width:900px){.gallery figure{flex-basis:calc((100% - 16px)/2)}}
 @media (max-width:440px){.gallery figure{flex-basis:100%}}
 html[lang=ru] .gallery figure.new::before{content:"новое"}
+
+.theme[data-theme=lilac] h3{color:#c7b8e0}
