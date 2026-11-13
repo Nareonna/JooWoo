@@ -167,13 +167,13 @@
     "ru": "Плагин Витраж",
     "en": "Stained Glass plugin"
    },
-   "ver": "1.3.2",
-   "date": "12.11.2026",
-   "ru": "joowoo-vitrazh-1.3.2.tpg",
-   "en": "joowoo-vitrazh-1.3.2.tpg",
+   "ver": "1.3.3",
+   "date": "14.11.2026",
+   "ru": "joowoo-vitrazh-1.3.3.tpg",
+   "en": "joowoo-vitrazh-1.3.3.tpg",
    "note": {
-    "ru": "SHINO-Comix, кнопка «▤ Вид», правила для снимков",
-    "en": "SHINO-Comix, «▤ View» button, snapshot rules"
+    "ru": "комикс про один момент, без чужих обликов, «Места» по желанию",
+    "en": "one-moment comic, no borrowed looks, places optional"
    }
   },
   {
