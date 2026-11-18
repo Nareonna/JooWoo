@@ -124,6 +124,21 @@
       '<p class="bk-note">'+(l==='ru'?'Старые версии больше не обновляются. Бери их, только если с новой что-то не так — и напиши в Telegram, что именно.':'Old versions are no longer updated. Take one only if the new one misbehaves — and tell us in Telegram what went wrong.')+'</p>'};
   (function(){var b=document.querySelector('.basket-btn');if(!b)return;b.addEventListener('click',function(){var i=document.getElementById('basket-in'),o=i.hidden;i.hidden=!o;b.setAttribute('aria-expanded',o);document.getElementById('basket').classList.toggle('open',o)})})();
 
+  /* ── подписчики: счётчик в облаке (tools/subs-worker.js). Пустой адрес — кнопки не видно ── */
+  var SUB_URL='';
+  window.jwSubs=(function(){var n=null,done=false,busy=false,boxes=[].slice.call(document.querySelectorAll('.subs'));
+    try{done=localStorage.getItem('jw-sub')==='1'}catch(e){}
+    function id(){var v;try{v=localStorage.getItem('jw-sid')}catch(e){}if(!v){v='';var a=new Uint8Array(16);crypto.getRandomValues(a);a.forEach(function(b){v+=('0'+b.toString(16)).slice(-2)});try{localStorage.setItem('jw-sid',v)}catch(e){}}return v}
+    function word(k,ru){if(!ru)return k===1?'subscriber':'subscribers';var a=k%10,b=k%100;return a===1&&b!==11?'подписчик':a>=2&&a<=4&&(b<12||b>14)?'подписчика':'подписчиков'}
+    function draw(){if(n==null)return;var ru=root.lang==='ru';boxes.forEach(function(x){x.hidden=false;x.classList.toggle('done',done);
+      x.querySelector('.sub-l').textContent=done?(ru?'Ты с нами':'You’re with us'):(ru?'Подписаться':'Subscribe');x.querySelector('.sub-btn').disabled=done||busy;
+      x.querySelector('.sub-n b').textContent=n.toLocaleString(ru?'ru-RU':'en-US');x.querySelector('.sub-n small').textContent=word(n,ru)})}
+    function go(){if(done||busy)return;busy=true;draw();
+      fetch(SUB_URL+'/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id()})}).then(function(r){return r.json()}).then(function(d){if(d.ok){n=d.count;done=true;try{localStorage.setItem('jw-sub','1')}catch(e){}}}).catch(function(){}).then(function(){busy=false;draw()})}
+    boxes.forEach(function(x){x.querySelector('.sub-btn').addEventListener('click',go)});
+    if(SUB_URL&&boxes.length)fetch(SUB_URL+'/count').then(function(r){return r.json()}).then(function(d){n=d.count;draw()}).catch(function(){});
+    return draw})();
+
   /* ── язык: английский в разметке, русский из JW_RU ── */
   var tr=[].slice.call(document.querySelectorAll('[data-i18n]')),EN={};
   tr.forEach(function(el){EN[el.dataset.i18n]=el.innerHTML});
@@ -131,7 +146,7 @@
   function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
     tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
     lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
-    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();renderGenres();jwFiles();if(window.jwTlLab)jwTlLab();try{localStorage.setItem('jw-lang',l)}catch(e){}}
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();renderGenres();jwFiles();if(window.jwTlLab)jwTlLab();if(window.jwSubs)jwSubs();try{localStorage.setItem('jw-lang',l)}catch(e){}}
   lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   setLang(root.lang==='ru'?'ru':'en');
   setGenre(root.dataset.genre||'');

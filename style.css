@@ -415,3 +415,14 @@ html[data-skin=camellia] .hero-bg::after{background:radial-gradient(72% 62% at 5
 .bk-note{color:var(--mute);font-size:13px;text-align:center;margin:12px 0 0}
 @media (max-width:520px){.bk-r code{display:none}.bk-f summary{flex-wrap:wrap}}
 @media (max-width:600px){.genre-sec{padding-top:50px}.genres{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.genre{padding:16px 6px 14px}.genre .g-ic{font-size:20px;margin-bottom:2px}.genre b{font-size:17px}.genre small{display:none}.genre em{margin-top:6px;font-size:9px;letter-spacing:.12em;padding:3px 7px}.genre.on::after{top:6px;right:8px}.soon{padding:28px 18px 24px}}
+
+/* ═══ подписчики ═══ */
+.subs{display:flex;align-items:center;gap:12px;margin-top:22px;padding:5px 16px 5px 5px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--bg) 60%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sub-btn{display:flex;align-items:center;gap:8px;border:0;cursor:pointer;padding:9px 18px;border-radius:999px;font:600 12.5px var(--sc);letter-spacing:.18em;color:var(--bg);background:linear-gradient(120deg,var(--a1),var(--a3) 55%,var(--a2));box-shadow:0 6px 22px var(--glow);transition:transform .25s}
+.sub-btn:hover:not(:disabled){transform:translateY(-1px)}
+.sub-h{font-size:15px;letter-spacing:0;line-height:1}
+.subs.done .sub-btn{cursor:default;background:transparent;color:var(--a1);box-shadow:none;border:1px solid color-mix(in srgb,var(--a1) 45%,transparent)}
+.subs.done .sub-h{animation:beat 1.6s ease-in-out 1}
+.sub-n b{font:italic 700 20px var(--title);color:var(--text)}.sub-n small{font:italic 500 14px var(--fine);color:var(--mute)}
+.foot-subs{display:inline-flex;margin:6px auto 14px}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.35)}60%{transform:scale(.95)}}
