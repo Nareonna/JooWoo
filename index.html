@@ -13,8 +13,8 @@
 <link rel="icon" href="img/moon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=70">
-<script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=72">
+<script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l;var g=(location.search.match(/[?&]genre=([a-z]+)/)||[])[1]||localStorage.getItem('jw-genre');if(g)document.documentElement.dataset.genre=g}catch(e){}</script>
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
@@ -23,7 +23,7 @@
 <header class="bar" id="top">
   <a class="logo" href="#top"><span class="logo-mark">✦</span>JooWoo<small data-i18n="logo.sub">for Tavo</small></a>
   <nav class="nav" id="nav">
-    <a href="#start" data-i18n="nav.start">Start</a><a href="#themes" data-i18n="nav.themes">Themes</a><a href="#preset" data-i18n="nav.preset">Preset</a><a href="#setup" data-i18n="nav.setup">Setup</a><a href="#plates" data-i18n="nav.plates">Traces</a><a href="#plugins" data-i18n="nav.plugins">Plugins</a><a href="#guide" data-i18n="nav.guide">Guide</a><a href="#files" data-i18n="nav.files">Files</a><a href="#updates" data-i18n="nav.updates">Updates</a>
+    <a href="#genre" data-i18n="nav.genre">Genre</a><a href="#start" data-mode="realism" data-i18n="nav.start">Start</a><a href="#themes" data-mode="realism" data-i18n="nav.themes">Themes</a><a href="#preset" data-mode="realism" data-i18n="nav.preset">Preset</a><a href="#setup" data-i18n="nav.setup">Setup</a><a href="#plates" data-mode="realism" data-i18n="nav.plates">Traces</a><a href="#plugins" data-i18n="nav.plugins">Plugins</a><a href="#guide" data-mode="realism" data-i18n="nav.guide">Guide</a><a href="#files" data-i18n="nav.files">Files</a><a href="#updates" data-i18n="nav.updates">Updates</a>
   </nav>
   <div class="bar-tools">
     <div class="pill lang" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="ru">RU</button></div>
@@ -73,8 +73,22 @@
   </ul>
 </section>
 
+<!-- ═══ ЖАНРЫ ═══ -->
+<section class="sec genre-sec" id="genre">
+  <header class="sec-head"><p class="kicker" data-i18n="gn.kicker">✦ genre</p><h2 data-i18n="gn.title">Which story are you telling?</h2><p data-i18n="gn.lead">Each genre gets its own preset and its own files. The plugins work in any of them.</p></header>
+  <div class="genres reveal" id="genres" role="tablist" aria-label="Genre"></div>
+  <div class="soon reveal" id="soon" hidden>
+    <span class="soon-ic" aria-hidden="true"></span>
+    <p class="kicker" data-i18n="gn.soonk">coming soon</p>
+    <h3 class="soon-t"></h3>
+    <p class="soon-d" data-i18n="gn.soond">The preset for this genre doesn’t have a name yet — it’s being written and tested in real chats. News and spoilers come to Telegram first.</p>
+    <p class="soon-d small" data-i18n="gn.soonp">Meanwhile the plugins already work here: Whisper keeps the memory, Stained Glass draws the pictures.</p>
+    <div class="dl center"><a class="btn" href="#plugins" data-i18n="gn.toplug">To the plugins</a><a class="btn ghost" href="https://t.me/joowoowa" target="_blank" rel="noopener">Telegram</a></div>
+  </div>
+</section>
+
 <!-- ═══ QUICK START ═══ -->
-<section class="sec qs-sec" id="start">
+<section class="sec qs-sec" id="start" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="qs.kicker">✦ quick start</p><h2 data-i18n="qs.title">Four steps and you're in</h2></header>
   <ol class="qs reveal">
     <li><b>1</b><h4 data-i18n="qs.1t">Pick a night</h4><p data-i18n="qs.1d">The whole site switches with it — screenshots, files, colours.</p>
@@ -89,7 +103,7 @@
 </section>
 
 <!-- ═══ THEMES ═══ -->
-<section class="sec" id="themes">
+<section class="sec" id="themes" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="themes.kicker">i · themes</p><h2 data-i18n="themes.title">Three nights to choose from</h2><p data-i18n="themes.lead">A theme is the look of the chat: message headers, fonts, highlighted dialogue. Install it in Tavo by importing the <code>.thm</code> file — or grab everything for a theme in one archive.</p></header>
 
   <div class="themes">
@@ -140,7 +154,7 @@
 </section>
 
 <!-- ═══ PRESET ═══ -->
-<section class="sec" id="preset">
+<section class="sec" id="preset" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="pre.kicker">ii · preset</p><h2>Vesper 1.4.1</h2><p data-i18n="pre.lead">A preset where the character has a life of his own. He thinks before he answers, never writes for you, remembers what happened and reacts like a person — not like an assistant.</p></header>
   <div class="preset reveal">
     <div class="pillars">
@@ -240,7 +254,7 @@
 </section>
 
 <!-- ═══ PLATES ═══ -->
-<section class="sec" id="plates">
+<section class="sec" id="plates" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="pl.kicker">iv · traces</p><h2 data-i18n="pl.title">Traces of the evening</h2><p data-i18n="pl.lead">Not phone apps — small things from the scene: a snapshot that develops when you tap it, a note on a napkin, a ticket stub, the trail of his scent, his pockets turned out, a message he typed and deleted, a rumour from the city, end credits for the day, his to-do list, a receipt, a story post, a weather forecast for the two of you, his route through the day and the lining under his mask. The model writes a few lines, a regex draws the card.</p></header>
   <div class="gallery reveal">
     <figure><img data-l="img/plates-{S}-1-{L}.webp?v=3" src="img/plates-midnight-1-en.webp?v=3" alt="" loading="lazy"><figcaption data-i18n="g1">snapshot & note</figcaption></figure>
@@ -276,7 +290,7 @@
 </section>
 
 <!-- ═══ GUIDE ═══ -->
-<section class="sec" id="guide">
+<section class="sec" id="guide" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="gd.kicker">vi · guide</p><h2 data-i18n="gd.title">How to write and what to install</h2></header>
   <div class="guide reveal">
     <div class="markup">
@@ -305,6 +319,14 @@
 <section class="sec" id="files">
   <header class="sec-head"><p class="kicker" data-i18n="fl.kicker">vii · files</p><h2 data-i18n="fl.title">Every file, every version</h2><p data-i18n="fl.lead">Everything in one place: what each file is, its version and when it was last updated. Files marked «new» changed in the latest update — re-import only those.</p></header>
   <div class="vers reveal" id="vers"></div>
+  <div class="basket" id="basket">
+    <button class="basket-btn" type="button" aria-expanded="false" aria-controls="basket-in">
+      <span class="basket-ic" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M13 15c0-5 3-8 7-8s7 3 7 8"/><path d="M5 15h30l-3.5 17a3 3 0 0 1-3 2.4H11.5a3 3 0 0 1-3-2.4z"/><path d="M14 20l1 9M20 20v9M26 20l-1 9" opacity=".7"/></svg></span>
+      <span class="basket-t"><b data-i18n="bk.t">Basket</b><small data-i18n="bk.d">older versions — if a new one misbehaves, roll back</small></span>
+      <span class="basket-n" id="basket-n"></span><span class="basket-go" aria-hidden="true">⌄</span>
+    </button>
+    <div class="basket-in" id="basket-in" hidden></div>
+  </div>
 </section>
 
 <section class="sec" id="updates">
@@ -431,8 +453,8 @@
 </footer>
 
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
-<script src="files.js?v=4"></script>
-<script src="i18n.js?v=70"></script>
-<script src="app.js?v=70"></script>
+<script src="files.js?v=5"></script>
+<script src="i18n.js?v=71"></script>
+<script src="app.js?v=71"></script>
 </body>
 </html>

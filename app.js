@@ -69,7 +69,7 @@
 
 
   /* ── файлы и версии из files.js: ссылки [data-f], метки [data-v], составы [data-has], таблица #vers ── */
-  window.jwFiles=function(){var F=window.JW_FILES;if(!F)return;var l=root.lang==='ru'?'ru':'en',by={},top=0;
+  window.jwFiles=function(){var F=window.JW_FILES;if(!F)return;var l=root.lang==='ru'?'ru':'en',by={},top=0,gn=jwGenre(),inG=function(i){return !i.mode||i.mode===gn};
     function dn(d){var p=d.split('.');return +(p[2]+p[1]+p[0])}
     F.items.forEach(function(i){by[i.id]=i;top=Math.max(top,dn(i.date))});
     var T=l==='ru'?{nw:'новое',up:'обновлено',dl:'скачать',inside:'внутри',last:'Последнее обновление',cnt:'новых файлов',g:{preset:'Пресет',regex:'Регексы — шапка, следы, переписка',lore:'Лорбук',theme:'Темы',plugin:'Плагины',bundle:'Архивы «всё сразу»'}}
@@ -82,21 +82,47 @@
     var sk=root.dataset.skin==='camellia'?1:root.dataset.skin==='lilac'?2:0;
     [].forEach.call(document.querySelectorAll('[data-fsk]'),function(a){var i=by[a.dataset.fsk.split('|')[sk]];if(i)a.setAttribute('href','files/'+i[l])});
     [].forEach.call(document.querySelectorAll('[data-hsk]'),function(p){p.dataset.has=p.dataset.hsk.split('|')[sk]});
-    var nw=document.getElementById('news');if(nw){var fresh=F.items.filter(function(i){return isNew(i)&&!i.has&&i.ver}),last=fresh.length?fresh[0].date:'';
+    var nw=document.getElementById('news');if(nw){var fresh=F.items.filter(function(i){return isNew(i)&&!i.has&&i.ver&&inG(i)}),last=fresh.length?fresh[0].date:'';
       nw.innerHTML='<span class="news-d">'+last.slice(0,5)+'</span><span class="news-t">'+(l==='ru'?'обновлено: ':'updated: ')+fresh.slice(0,3).map(short).join(' · ')+(fresh.length>3?' '+(l==='ru'?'и ещё ':'and ')+(fresh.length-3):'')+'</span><span class="news-a">→</span>'}
     [].forEach.call(document.querySelectorAll('[data-has]'),function(p){var i=by[p.dataset.has];if(!i)return;p.innerHTML=T.inside+': '+i.has.map(function(k){var m=by[k];return '<span class="'+(isNew(m)?'new':'')+'">'+short(m)+'</span>'}).join(' · ')});
     var box=document.getElementById('vers');if(!box)return;
-    var n=F.items.filter(function(i){return isNew(i)&&!i.has}).length,last=F.items.filter(function(i){return dn(i.date)===top})[0].date;
+    var G=F.items.filter(inG),n=G.filter(function(i){return isNew(i)&&!i.has}).length,last=F.items.filter(function(i){return dn(i.date)===top})[0].date;
     var h='<p class="vers-top">'+T.last+': <b>'+last+'</b> · '+T.cnt+': <b>'+n+'</b></p>',groups=[];
-    F.items.forEach(function(i){if(groups.indexOf(i.group)<0)groups.push(i.group)});
+    G.forEach(function(i){if(groups.indexOf(i.group)<0)groups.push(i.group)});
     groups.forEach(function(g){h+='<div class="vg"><h4>'+T.g[g]+'</h4>';
-      F.items.filter(function(i){return i.group===g}).forEach(function(i){
+      G.filter(function(i){return i.group===g}).forEach(function(i){
         var note=i.has?T.inside+': '+i.has.map(function(k){return short(by[k])}).join(' · '):(i.note?i.note[l]:'');
         h+='<div class="vr'+(isNew(i)?' new':'')+'"><div class="vr-m"><b>'+i.name[l]+'</b><small>'+note+'</small><code>'+i[l]+'</code></div>'+
            '<div class="vr-s">'+(i.ver?'<span class="vr-v">v'+i.ver+'</span>':'')+'<span class="vr-d">'+(isNew(i)?'<em>'+T.nw+'</em>':T.up)+' '+i.date+'</span></div>'+
            '<a class="vr-dl" href="files/'+i[l]+'" download aria-label="'+T.dl+'">↓</a></div>'});
       h+='</div>'});
-    box.innerHTML=h};
+    box.innerHTML=h;jwBasket()};
+
+  /* ── жанры: реализм (Vesper) и будущие пресеты. Список — в tools/versions.json → modes ── */
+  function modes(){return (window.JW_FILES&&JW_FILES.modes)||[{id:'realism'}]}
+  window.jwGenre=function(){var g=root.dataset.genre,M=modes();return M.some(function(m){return m.id===g})?g:M[0].id};
+  function renderGenres(){var box=document.getElementById('genres');if(!box)return;var l=root.lang==='ru'?'ru':'en',g=jwGenre(),F=window.JW_FILES||{items:[]},pre=F.items.filter(function(i){return i.id==='preset'})[0];
+    box.innerHTML=modes().map(function(m){var on=m.id===g,sub=m.soon?'<em class="g-soon">'+(l==='ru'?'скоро':'soon')+'</em>':'<em class="g-pre">'+(m.preset||'')+(pre&&m.preset?' '+pre.ver:'')+'</em>';
+      return '<button class="genre'+(on?' on':'')+(m.soon?' is-soon':'')+'" role="tab" aria-selected="'+on+'" data-genre="'+m.id+'"><span class="g-ic">'+(m.icon||'✦')+'</span><b>'+m.name[l]+'</b><small>'+(m.tag?m.tag[l]:'')+'</small>'+sub+'</button>'}).join('');
+    var cur=modes().filter(function(m){return m.id===g})[0]||{},sn=document.getElementById('soon');
+    if(sn){sn.hidden=!cur.soon;if(cur.soon){sn.querySelector('.soon-ic').textContent=cur.icon||'✦';sn.querySelector('.soon-t').textContent=(l==='ru'?'Пресет для жанра «':'A preset for «')+cur.name[l]+(l==='ru'?'» — скоро выйдет':'» — coming soon')}}}
+  function setGenre(g,user){root.dataset.genre=g;g=jwGenre();
+    [].forEach.call(document.querySelectorAll('[data-mode]'),function(el){el.hidden=el.dataset.mode!==g});
+    try{localStorage.setItem('jw-genre',g);if(history.replaceState){var q=g===modes()[0].id?'':'?genre='+g;history.replaceState(null,'',location.pathname+q+location.hash)}}catch(e){}
+    renderGenres();if(window.jwFiles)jwFiles();
+    if(user){var t=document.getElementById(modes().filter(function(m){return m.id===g})[0].soon?'soon':'start');if(t)setTimeout(function(){t.scrollIntoView({behavior:'smooth',block:'start'})},60)}}
+  document.addEventListener('click',function(e){var b=e.target.closest('.genre');if(b)setGenre(b.dataset.genre,true)});
+
+  /* ── корзина: старые версии файлов (files/archive). Новые висят в списке выше ── */
+  window.jwBasket=function(){var F=window.JW_FILES,box=document.getElementById('basket-in'),cnt=document.getElementById('basket-n');if(!F||!box)return;
+    var l=root.lang==='ru'?'ru':'en',g=jwGenre(),A=(F.archive||[]).filter(function(a){return !a.mode||a.mode===g}),fam=[],by={};
+    document.getElementById('basket').hidden=!A.length;cnt.textContent=A.length;
+    A.forEach(function(a){if(!by[a.id]){by[a.id]=[];fam.push(a.id)}by[a.id].push(a)});
+    box.innerHTML=fam.map(function(id){var L=by[id];
+      return '<details class="bk-f"><summary><b>'+L[0].name[l]+'</b><span>'+L.length+' · '+(l==='ru'?'последняя ':'last ')+'v'+L[0].ver+'</span></summary>'+
+        L.map(function(a){return '<div class="bk-r"><span class="bk-v">v'+a.ver+'</span><span class="bk-d">'+a.date+'</span><code>'+a[l]+'</code><a class="vr-dl" href="files/archive/'+a[l]+'" download aria-label="'+(l==='ru'?'скачать':'download')+'">↓</a></div>'}).join('')+'</details>'}).join('')+
+      '<p class="bk-note">'+(l==='ru'?'Старые версии больше не обновляются. Бери их, только если с новой что-то не так — и напиши в Telegram, что именно.':'Old versions are no longer updated. Take one only if the new one misbehaves — and tell us in Telegram what went wrong.')+'</p>'};
+  (function(){var b=document.querySelector('.basket-btn');if(!b)return;b.addEventListener('click',function(){var i=document.getElementById('basket-in'),o=i.hidden;i.hidden=!o;b.setAttribute('aria-expanded',o);document.getElementById('basket').classList.toggle('open',o)})})();
 
   /* ── язык: английский в разметке, русский из JW_RU ── */
   var tr=[].slice.call(document.querySelectorAll('[data-i18n]')),EN={};
@@ -105,9 +131,10 @@
   function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
     tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
     lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
-    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();jwFiles();if(window.jwTlLab)jwTlLab();try{localStorage.setItem('jw-lang',l)}catch(e){}}
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();renderGenres();jwFiles();if(window.jwTlLab)jwTlLab();try{localStorage.setItem('jw-lang',l)}catch(e){}}
   lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   setLang(root.lang==='ru'?'ru':'en');
+  setGenre(root.dataset.genre||'');
 
 
   /* ── обновления: свежие сверху, старые свёрнуты ── */
