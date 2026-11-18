@@ -102,10 +102,10 @@
   function modes(){return (window.JW_FILES&&JW_FILES.modes)||[{id:'realism'}]}
   window.jwGenre=function(){var g=root.dataset.genre,M=modes();return M.some(function(m){return m.id===g})?g:M[0].id};
   function renderGenres(){var box=document.getElementById('genres');if(!box)return;var l=root.lang==='ru'?'ru':'en',g=jwGenre(),F=window.JW_FILES||{items:[]},pre=F.items.filter(function(i){return i.id==='preset'})[0];
-    box.innerHTML=modes().map(function(m){var on=m.id===g,sub=m.soon?'<em class="g-soon">'+(l==='ru'?'скоро':'soon')+'</em>':'<em class="g-pre">'+(m.preset||'')+(pre&&m.preset?' '+pre.ver:'')+'</em>';
+    box.innerHTML=modes().map(function(m){var on=m.id===g,sub=m.soon?'<em class="g-soon">'+(l==='ru'?'в работе':'in the works')+'</em>':'<em class="g-pre">'+(m.preset||'')+(pre&&m.preset?' '+pre.ver:'')+'</em>';
       return '<button class="genre'+(on?' on':'')+(m.soon?' is-soon':'')+'" role="tab" aria-selected="'+on+'" data-genre="'+m.id+'"><span class="g-ic">'+(m.icon||'✦')+'</span><b>'+m.name[l]+'</b><small>'+(m.tag?m.tag[l]:'')+'</small>'+sub+'</button>'}).join('');
     var cur=modes().filter(function(m){return m.id===g})[0]||{},sn=document.getElementById('soon');
-    if(sn){sn.hidden=!cur.soon;if(cur.soon){sn.querySelector('.soon-ic').textContent=cur.icon||'✦';sn.querySelector('.soon-t').textContent=(l==='ru'?'Пресет для жанра «':'A preset for «')+cur.name[l]+(l==='ru'?'» — скоро выйдет':'» — coming soon')}}}
+    if(sn){sn.hidden=!cur.soon;if(cur.soon){sn.querySelector('.soon-ic').textContent=cur.icon||'✦';sn.querySelector('.soon-t').textContent=l==='ru'?'Скоро выйдет':'Coming soon'}}}
   function setGenre(g,user){root.dataset.genre=g;g=jwGenre();
     [].forEach.call(document.querySelectorAll('[data-mode]'),function(el){el.hidden=el.dataset.mode!==g});
     try{localStorage.setItem('jw-genre',g);if(history.replaceState){var q=g===modes()[0].id?'':'?genre='+g;history.replaceState(null,'',location.pathname+q+location.hash)}}catch(e){}

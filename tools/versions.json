@@ -293,28 +293,15 @@
    "preset": "Vesper"
   },
   {
-   "id": "fantasy",
-   "icon": "✶",
+   "id": "soon",
+   "icon": "✦",
    "name": {
-    "ru": "Фэнтези",
-    "en": "Fantasy"
+    "ru": "Скоро",
+    "en": "Soon"
    },
    "tag": {
-    "ru": "магия, королевства, драконы",
-    "en": "magic, kingdoms, dragons"
-   },
-   "soon": true
-  },
-  {
-   "id": "mystic",
-   "icon": "☽",
-   "name": {
-    "ru": "Мистика",
-    "en": "Mystic"
-   },
-   "tag": {
-    "ru": "тени, проклятия, нечисть",
-    "en": "shadows, curses, the uncanny"
+    "ru": "новые пресеты в работе",
+    "en": "new presets in the works"
    },
    "soon": true
   }
