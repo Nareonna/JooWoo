@@ -125,7 +125,7 @@
   (function(){var b=document.querySelector('.basket-btn');if(!b)return;b.addEventListener('click',function(){var i=document.getElementById('basket-in'),o=i.hidden;i.hidden=!o;b.setAttribute('aria-expanded',o);document.getElementById('basket').classList.toggle('open',o)})})();
 
   /* ── подписчики: счётчик в облаке (tools/subs-worker.js). Пустой адрес — кнопки не видно ── */
-  var SUB_URL='';
+  var SUB_URL='https://joowoo-subs.sunandesu2002.workers.dev';
   window.jwSubs=(function(){var n=null,done=false,busy=false,boxes=[].slice.call(document.querySelectorAll('.subs'));
     try{done=localStorage.getItem('jw-sub')==='1'}catch(e){}
     function id(){var v;try{v=localStorage.getItem('jw-sid')}catch(e){}if(!v){v='';var a=new Uint8Array(16);crypto.getRandomValues(a);a.forEach(function(b){v+=('0'+b.toString(16)).slice(-2)});try{localStorage.setItem('jw-sid',v)}catch(e){}}return v}
