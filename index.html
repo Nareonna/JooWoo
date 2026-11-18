@@ -13,7 +13,7 @@
 <link rel="icon" href="img/moon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=74">
+<link rel="stylesheet" href="style.css?v=75">
 <script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l;var g=(location.search.match(/[?&]genre=([a-z]+)/)||[])[1]||localStorage.getItem('jw-genre');if(g)document.documentElement.dataset.genre=g}catch(e){}</script>
 </head>
 <body>
@@ -22,9 +22,6 @@
 
 <header class="bar" id="top">
   <a class="logo" href="#top"><span class="logo-mark">✦</span>JooWoo<small data-i18n="logo.sub">for Tavo</small></a>
-  <nav class="nav" id="nav">
-    <a href="#genre" data-i18n="nav.genre">Genre</a><a href="#start" data-mode="realism" data-i18n="nav.start">Start</a><a href="#themes" data-mode="realism" data-i18n="nav.themes">Themes</a><a href="#preset" data-mode="realism" data-i18n="nav.preset">Preset</a><a href="#setup" data-i18n="nav.setup">Setup</a><a href="#plates" data-mode="realism" data-i18n="nav.plates">Traces</a><a href="#plugins" data-i18n="nav.plugins">Plugins</a><a href="#guide" data-mode="realism" data-i18n="nav.guide">Guide</a><a href="#files" data-i18n="nav.files">Files</a><a href="#updates" data-i18n="nav.updates">Updates</a>
-  </nav>
   <div class="bar-tools">
     <div class="pill lang" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="ru">RU</button></div>
     <div class="pill skin" role="group" aria-label="Site look">
@@ -32,7 +29,7 @@
       <button data-set="camellia" title="MOON CAMELLIA">✿<span>camellia</span></button>
       <button data-set="lilac" title="LILAC HOUR">☾<span>lilac</span></button>
     </div>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+    <button class="gear" type="button" data-open-setup aria-label="Tavo settings"><span aria-hidden="true">⚙</span><b data-i18n="tb.setup">Settings</b></button>
   </div>
 </header>
 
@@ -74,8 +71,21 @@
   </ul>
 </section>
 
+<!-- ═══ ВКЛАДКИ ═══ -->
+<nav class="tabs" id="tabs" aria-label="Sections"><div class="tabs-in">
+  <a href="#home" data-tab="home"><i>✦</i><span data-i18n="tb.home">Start</span></a>
+  <a href="#themes" data-tab="themes" data-mode="realism"><i>☕</i><span data-i18n="nav.themes">Themes</span></a>
+  <a href="#preset" data-tab="preset" data-mode="realism"><i>✎</i><span data-i18n="nav.preset">Preset</span></a>
+  <a href="#plates" data-tab="plates" data-mode="realism"><i>✉</i><span data-i18n="nav.plates">Traces</span></a>
+  <a href="#plugins" data-tab="plugins"><i>✧</i><span data-i18n="nav.plugins">Plugins</span></a>
+  <a href="#guide" data-tab="guide" data-mode="realism"><i>❡</i><span data-i18n="nav.guide">Guide</span></a>
+  <a href="#files" data-tab="files"><i>⇣</i><span data-i18n="nav.files">Files</span></a>
+  <a href="#updates" data-tab="updates"><i>✺</i><span data-i18n="nav.updates">Updates</span></a>
+  <button class="tab-gear" type="button" data-open-setup><i>⚙</i><span data-i18n="tb.setup">Settings</span></button>
+</div></nav>
+
 <!-- ═══ ЖАНРЫ ═══ -->
-<section class="sec genre-sec" id="genre">
+<section class="sec genre-sec" id="genre" data-panel="home">
   <header class="sec-head"><p class="kicker" data-i18n="gn.kicker">✦ genre</p><h2 data-i18n="gn.title">Which story are you telling?</h2><p data-i18n="gn.lead">Each genre gets its own preset and its own files. The plugins work in any of them.</p></header>
   <div class="genres reveal" id="genres" role="tablist" aria-label="Genre"></div>
   <div class="soon reveal" id="soon" hidden>
@@ -89,7 +99,7 @@
 </section>
 
 <!-- ═══ QUICK START ═══ -->
-<section class="sec qs-sec" id="start" data-mode="realism">
+<section class="sec qs-sec" id="start" data-panel="home" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="qs.kicker">✦ quick start</p><h2 data-i18n="qs.title">Four steps and you're in</h2></header>
   <ol class="qs reveal">
     <li><b>1</b><h4 data-i18n="qs.1t">Pick a night</h4><p data-i18n="qs.1d">The whole site switches with it — screenshots, files, colours.</p>
@@ -97,14 +107,14 @@
     <li><b>2</b><h4 data-i18n="qs.2t">Take everything in one archive</h4><p data-i18n="qs.2d">Theme, regex sets, the traces lorebook and the Vesper preset — matched to each other.</p>
       <a class="btn" href="files/joowoo-midnight-all-en.zip" data-fsk="all1|all2|all3" download data-i18n="qs.2b">Download the archive</a><p class="vline" data-hsk="all1|all2|all3"></p></li>
     <li><b>3</b><h4 data-i18n="qs.3t">Import into Tavo</h4><p data-i18n="qs.3d">Theme — in appearance, regex sets 1 and your theme's set — in regex, the lorebook and the preset — each in its own place. Then turn on Advanced Rendering in the chat settings.</p>
-      <a class="btn ghost" href="#setup" data-i18n="qs.3b">Tavo settings</a></li>
+      <button class="btn ghost" type="button" data-open-setup data-i18n="qs.3b">Tavo settings</button></li>
     <li><b>4</b><h4 data-i18n="qs.4t">Add the plugins</h4><p data-i18n="qs.4d">Whisper keeps memory and threads, Stained Glass draws the pictures.</p>
       <div class="qs-pl"><a class="btn ghost" href="files/joowoo-shepot-1.1.2.tpg" data-f="shepot" download><span data-i18n="qs.4a">Whisper</span> <span class="ver" data-v="shepot"></span></a><a class="btn ghost" href="files/joowoo-vitrazh-1.3.8.tpg" data-f="vitrazh" download><span data-i18n="qs.4b">Stained Glass</span> <span class="ver" data-v="vitrazh"></span></a></div></li>
   </ol>
 </section>
 
 <!-- ═══ THEMES ═══ -->
-<section class="sec" id="themes" data-mode="realism">
+<section class="sec" id="themes" data-panel="themes" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="themes.kicker">i · themes</p><h2 data-i18n="themes.title">Three nights to choose from</h2><p data-i18n="themes.lead">A theme is the look of the chat: message headers, fonts, highlighted dialogue. Install it in Tavo by importing the <code>.thm</code> file — or grab everything for a theme in one archive.</p></header>
 
   <div class="themes">
@@ -155,7 +165,7 @@
 </section>
 
 <!-- ═══ PRESET ═══ -->
-<section class="sec" id="preset" data-mode="realism">
+<section class="sec" id="preset" data-panel="preset" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="pre.kicker">ii · preset</p><h2>Vesper 1.4.1</h2><p data-i18n="pre.lead">A preset where the character has a life of his own. He thinks before he answers, never writes for you, remembers what happened and reacts like a person — not like an assistant.</p></header>
   <div class="preset reveal">
     <div class="pillars">
@@ -179,83 +189,9 @@
   </div>
 </section>
 
-<!-- ═══ SETUP ═══ -->
-<section class="sec" id="setup">
-  <header class="sec-head"><p class="kicker" data-i18n="st.kicker">iii · setup</p><h2 data-i18n="st.title">Setting up Tavo</h2><p data-i18n="st.lead">Everything here is tuned for <b>Gemini 4 Argon</b> — the model the preset is made for. Names are as in Tavo’s English interface.</p></header>
-  <div class="setup reveal">
-    <div class="st-must"><b data-i18n="st.m1t">In every chat</b><span data-i18n="st.m1">Chat settings → turn on <em>Advanced Rendering</em>. Without it plates, blocks and Stained Glass stay plain text.</span></div>
-    <div class="st-grp"><h4 data-i18n="st.g1">Display settings</h4>
-      <div class="st-row"><div><b>Hide model reasoning</b><p data-i18n="st.g1.0d">Keeps the “author’s draft” visible — the reply plan Vesper writes before each message.</p></div><span class="st-v off" data-i18n="st.g1.0v">Off</span></div>
-      <div class="st-row"><div><b>Immersive chat</b><p data-i18n="st.g1.1d">Hides the top bar while you write, so the theme fills the screen. To taste.</p></div><span class="st-v on" data-i18n="st.g1.1v">On</span></div>
-      <div class="st-row"><div><b>JavaScript support</b><p data-i18n="st.g1.2d">Plates, blocks and plugins run on JavaScript. Never set it to Off.</p></div><span class="st-v key" data-i18n="st.g1.2v">Auto</span></div>
-      <div class="st-row"><div><b>Math rendering</b><p data-i18n="st.g1.3d">Leave as is.</p></div><span class="st-v mute" data-i18n="st.g1.3v">Standard delimiters</span></div>
-    </div>
-    <div class="st-grp"><h4 data-i18n="st.g2">Chat settings · Compatibility</h4>
-      <div class="st-row"><div><b>Enable EJS templates</b><p data-i18n="st.g2.0d">Many cards and lorebooks use <code>&lt;% %&gt;</code> templates. JooWoo files don’t need it, but it does no harm.</p></div><span class="st-v on" data-i18n="st.g2.0v">On</span></div>
-      <div class="st-row"><div><b>Reverse lorebook evaluation</b><p data-i18n="st.g2.1d">Lorebooks made for SillyTavern read their macros the way they were written.</p></div><span class="st-v on" data-i18n="st.g2.1v">On</span></div>
-      <div class="st-row"><div><b>Apply regex to hidden messages</b><p data-i18n="st.g2.2d">Trackers and model leaks get cleaned in hidden messages too. If the chat lags, turn it off.</p></div><span class="st-v on" data-i18n="st.g2.2v">On</span></div>
-      <div class="st-row"><div><b>Auto-clear regeneration history</b><p data-i18n="st.g2.3d">Keeps your swipes after a restart.</p></div><span class="st-v off" data-i18n="st.g2.3v">Off</span></div>
-      <div class="st-row"><div><b>Legacy fullscreen plugins</b><p data-i18n="st.g2.4d">JooWoo plugins use the new layout insets.</p></div><span class="st-v off" data-i18n="st.g2.4v">Off</span></div>
-      <div class="st-row"><div><b>Apply legacy long-term memory prompts</b><p data-i18n="st.g2.5d">Vesper keeps its own scene memory.</p></div><span class="st-v mute" data-i18n="st.g2.5v">Don’t open</span></div>
-    </div>
-    <div class="st-grp"><h4 data-i18n="st.g3">Chat settings · Performance</h4>
-      <div class="st-row"><div><b>Disable bubble Gaussian blur</b><p data-i18n="st.g3.0d">The themes draw their own glass. Smoother scrolling, less heat.</p></div><span class="st-v on" data-i18n="st.g3.0v">On</span></div>
-      <div class="st-row"><div><b>Streaming rendering quality</b><p data-i18n="st.g3.1d">Plates draw themselves while the reply streams. Lower it only on a weak phone.</p></div><span class="st-v key" data-i18n="st.g3.1v">Max</span></div>
-      <div class="st-row"><div><b>Chat list message preview</b><p data-i18n="st.g3.2d">Any value works.</p></div><span class="st-v mute" data-i18n="st.g3.2v">Full</span></div>
-    </div>
-    <div class="st-grp"><h4 data-i18n="st.g4">Script & tool confirmations</h4>
-      <div class="st-row"><div><b>Write to libraries</b><p data-i18n="st.g4.0d">Otherwise Stained Glass and Whisper ask before every saved look or note.</p></div><span class="st-v off" data-i18n="st.g4.0v">Off</span></div>
-      <div class="st-row"><div><b>Update current chat</b><p data-i18n="st.g4.1d">Plugins update the chat and memory without a pop-up each time.</p></div><span class="st-v off" data-i18n="st.g4.1v">Off</span></div>
-      <div class="st-row"><div><b>Send & generate</b><p data-i18n="st.g4.2d">Stained Glass can draw by itself. Turn these on if you want to approve everything by hand.</p></div><span class="st-v off" data-i18n="st.g4.2v">Off</span></div>
-    </div>
-    <div class="st-grp"><h4 data-i18n="st.g5">Model tool settings</h4>
-      <div class="st-row"><div><b>Enable tools</b><p data-i18n="st.g5.0d">The model can call tools — search, plugins.</p></div><span class="st-v on" data-i18n="st.g5.0v">On</span></div>
-      <div class="st-row"><div><b>Load tools dynamically</b><p data-i18n="st.g5.1d">Only the tools a scene needs — less context spent.</p></div><span class="st-v on" data-i18n="st.g5.1v">On</span></div>
-      <div class="st-row"><div><b>Hide tool calls</b><p data-i18n="st.g5.2d">Calls still run, but don’t clutter the story.</p></div><span class="st-v on" data-i18n="st.g5.2v">On</span></div>
-      <div class="st-row"><div><b>Web search API</b><p data-i18n="st.g5.3d">Any working search.</p></div><span class="st-v mute" data-i18n="st.g5.3v">Web Search API 1</span></div>
-    </div>
-    <div class="st-api"><div class="st-api-h"><h4 data-i18n="st.api">API parameters · Gemini 4 Argon</h4><button class="btn ghost st-copy" type="button" data-i18n="st.copy">Copy</button></div>
-      <pre id="st-json">{
-  &quot;max_tokens&quot;: 32768,
-  &quot;extra_body&quot;: {
-    &quot;google&quot;: {
-      &quot;thinking_config&quot;: {
-        &quot;thinking_level&quot;: &quot;medium&quot;,
-        &quot;include_thoughts&quot;: true
-      },
-      &quot;safety_settings&quot;: [
-        {
-          &quot;category&quot;: &quot;HARM_CATEGORY_HARASSMENT&quot;,
-          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
-        },
-        {
-          &quot;category&quot;: &quot;HARM_CATEGORY_HATE_SPEECH&quot;,
-          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
-        },
-        {
-          &quot;category&quot;: &quot;HARM_CATEGORY_SEXUALLY_EXPLICIT&quot;,
-          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
-        },
-        {
-          &quot;category&quot;: &quot;HARM_CATEGORY_DANGEROUS_CONTENT&quot;,
-          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
-        }
-      ]
-    }
-  }
-}</pre>
-      <ul class="st-notes">
-        <li data-i18n="st.a1"><code>thinking_level: medium</code> — the model’s default, the balance of speed and depth. Argon takes <code>low</code>, <code>medium</code> or <code>high</code> (no <code>minimal</code>, and thinking can’t be switched off). For long, tangled scenes try <code>high</code>: slower, but holds threads better.</li>
-        <li data-i18n="st.a2"><code>include_thoughts: true</code> — needed for the “author’s draft” above the reply.</li>
-        <li data-i18n="st.a3"><code>max_tokens: 32768</code> — thinking counts toward this limit too, so don’t lower it below 16000.</li>
-        <li data-i18n="st.a4"><code>safety_settings</code> — on Gemini 4 Argon the filters are already off by default; the block doesn’t hurt, it just makes it explicit.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
 <!-- ═══ PLATES ═══ -->
-<section class="sec" id="plates" data-mode="realism">
+<section class="sec" id="plates" data-panel="plates" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="pl.kicker">iv · traces</p><h2 data-i18n="pl.title">Traces of the evening</h2><p data-i18n="pl.lead">Not phone apps — small things from the scene: a snapshot that develops when you tap it, a note on a napkin, a ticket stub, the trail of his scent, his pockets turned out, a message he typed and deleted, a rumour from the city, end credits for the day, his to-do list, a receipt, a story post, a weather forecast for the two of you, his route through the day and the lining under his mask. The model writes a few lines, a regex draws the card.</p></header>
   <div class="gallery reveal">
     <figure><img data-l="img/plates-{S}-1-{L}.webp?v=3" src="img/plates-midnight-1-en.webp?v=3" alt="" loading="lazy"><figcaption data-i18n="g1">snapshot & note</figcaption></figure>
@@ -276,7 +212,7 @@
 </section>
 
 <!-- ═══ PLUGINS ═══ -->
-<section class="sec" id="plugins">
+<section class="sec" id="plugins" data-panel="plugins">
   <header class="sec-head"><p class="kicker" data-i18n="pg.kicker">v · plugins</p><h2 data-i18n="pg.title">Tools for the chat</h2><p data-i18n="pg.lead">Plugins are installed in Tavo separately. Stained Glass, Whisper, Shelves and Feather download right here; Whisper is also on TavoHub. Update news and spoilers are in Telegram; every file lives here, on the site.</p></header>
   <div class="plugins reveal">
     <article><span class="pi"><img src="img/plugin-vitrazh.webp?v=2" alt="" loading="lazy"></span><h4 data-i18n="pg1.t">Stained Glass</h4><p data-i18n="pg1.d">Pictures as the story goes — NovelAI, Tensor, naistera or Tavo. Every style is a preset in folders: model, LoRAs with weights, tags, negative and steps — on in one tap, shared as a file. Its own frame prompt for Tensor, steady looks for everyone in the chat.</p><a class="pdl" href="files/joowoo-vitrazh-1.3.8.tpg" data-f="vitrazh" download><span data-i18n="pdl">Download</span> <b>1.3.8</b> <small>.tpg · RU / EN</small></a><span class="ver pv" data-v="vitrazh"></span><p class="pnote" data-i18n="pg1.note">replaces Canvas — remove Canvas first · two looks inside: ☕ / ✿</p></article>
@@ -291,7 +227,7 @@
 </section>
 
 <!-- ═══ GUIDE ═══ -->
-<section class="sec" id="guide" data-mode="realism">
+<section class="sec" id="guide" data-panel="guide" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="gd.kicker">vi · guide</p><h2 data-i18n="gd.title">How to write and what to install</h2></header>
   <div class="guide reveal">
     <div class="markup">
@@ -317,7 +253,7 @@
 </section>
 
 <!-- ═══ UPDATES ═══ -->
-<section class="sec" id="files">
+<section class="sec" id="files" data-panel="files">
   <header class="sec-head"><p class="kicker" data-i18n="fl.kicker">vii · files</p><h2 data-i18n="fl.title">Every file, every version</h2><p data-i18n="fl.lead">Everything in one place: what each file is, its version and when it was last updated. Files marked «new» changed in the latest update — re-import only those.</p></header>
   <div class="vers reveal" id="vers"></div>
   <div class="basket" id="basket">
@@ -330,7 +266,7 @@
   </div>
 </section>
 
-<section class="sec" id="updates">
+<section class="sec" id="updates" data-panel="updates">
   <header class="sec-head"><p class="kicker" data-i18n="up.kicker">viii · updates</p><h2 data-i18n="up.title">Notes from the night shift</h2></header>
   <ol class="timeline reveal">
     <li><time>14.11.2026</time><h4 data-i18n="n16.t">Stained Glass 1.3.8</h4><ul>
@@ -454,9 +390,85 @@
   <a class="up" href="#top" aria-label="Up">↑</a>
 </footer>
 
+<dialog class="setup-dlg" id="setup" aria-labelledby="setup-h">
+  <button class="dlg-x" type="button" aria-label="Close">×</button>
+  <div class="dlg-in">
+<header class="sec-head"><p class="kicker" data-i18n="st.kicker">⚙ setup</p><h2 id="setup-h" data-i18n="st.title">Setting up Tavo</h2><p data-i18n="st.lead">Everything here is tuned for <b>Gemini 4 Argon</b> — the model the preset is made for. Names are as in Tavo’s English interface.</p></header>
+  <div class="setup">
+    <div class="st-must"><b data-i18n="st.m1t">In every chat</b><span data-i18n="st.m1">Chat settings → turn on <em>Advanced Rendering</em>. Without it plates, blocks and Stained Glass stay plain text.</span></div>
+    <div class="st-grp"><h4 data-i18n="st.g1">Display settings</h4>
+      <div class="st-row"><div><b>Hide model reasoning</b><p data-i18n="st.g1.0d">Keeps the “author’s draft” visible — the reply plan Vesper writes before each message.</p></div><span class="st-v off" data-i18n="st.g1.0v">Off</span></div>
+      <div class="st-row"><div><b>Immersive chat</b><p data-i18n="st.g1.1d">Hides the top bar while you write, so the theme fills the screen. To taste.</p></div><span class="st-v on" data-i18n="st.g1.1v">On</span></div>
+      <div class="st-row"><div><b>JavaScript support</b><p data-i18n="st.g1.2d">Plates, blocks and plugins run on JavaScript. Never set it to Off.</p></div><span class="st-v key" data-i18n="st.g1.2v">Auto</span></div>
+      <div class="st-row"><div><b>Math rendering</b><p data-i18n="st.g1.3d">Leave as is.</p></div><span class="st-v mute" data-i18n="st.g1.3v">Standard delimiters</span></div>
+    </div>
+    <div class="st-grp"><h4 data-i18n="st.g2">Chat settings · Compatibility</h4>
+      <div class="st-row"><div><b>Enable EJS templates</b><p data-i18n="st.g2.0d">Many cards and lorebooks use <code>&lt;% %&gt;</code> templates. JooWoo files don’t need it, but it does no harm.</p></div><span class="st-v on" data-i18n="st.g2.0v">On</span></div>
+      <div class="st-row"><div><b>Reverse lorebook evaluation</b><p data-i18n="st.g2.1d">Lorebooks made for SillyTavern read their macros the way they were written.</p></div><span class="st-v on" data-i18n="st.g2.1v">On</span></div>
+      <div class="st-row"><div><b>Apply regex to hidden messages</b><p data-i18n="st.g2.2d">Trackers and model leaks get cleaned in hidden messages too. If the chat lags, turn it off.</p></div><span class="st-v on" data-i18n="st.g2.2v">On</span></div>
+      <div class="st-row"><div><b>Auto-clear regeneration history</b><p data-i18n="st.g2.3d">Keeps your swipes after a restart.</p></div><span class="st-v off" data-i18n="st.g2.3v">Off</span></div>
+      <div class="st-row"><div><b>Legacy fullscreen plugins</b><p data-i18n="st.g2.4d">JooWoo plugins use the new layout insets.</p></div><span class="st-v off" data-i18n="st.g2.4v">Off</span></div>
+      <div class="st-row"><div><b>Apply legacy long-term memory prompts</b><p data-i18n="st.g2.5d">Vesper keeps its own scene memory.</p></div><span class="st-v mute" data-i18n="st.g2.5v">Don’t open</span></div>
+    </div>
+    <div class="st-grp"><h4 data-i18n="st.g3">Chat settings · Performance</h4>
+      <div class="st-row"><div><b>Disable bubble Gaussian blur</b><p data-i18n="st.g3.0d">The themes draw their own glass. Smoother scrolling, less heat.</p></div><span class="st-v on" data-i18n="st.g3.0v">On</span></div>
+      <div class="st-row"><div><b>Streaming rendering quality</b><p data-i18n="st.g3.1d">Plates draw themselves while the reply streams. Lower it only on a weak phone.</p></div><span class="st-v key" data-i18n="st.g3.1v">Max</span></div>
+      <div class="st-row"><div><b>Chat list message preview</b><p data-i18n="st.g3.2d">Any value works.</p></div><span class="st-v mute" data-i18n="st.g3.2v">Full</span></div>
+    </div>
+    <div class="st-grp"><h4 data-i18n="st.g4">Script & tool confirmations</h4>
+      <div class="st-row"><div><b>Write to libraries</b><p data-i18n="st.g4.0d">Otherwise Stained Glass and Whisper ask before every saved look or note.</p></div><span class="st-v off" data-i18n="st.g4.0v">Off</span></div>
+      <div class="st-row"><div><b>Update current chat</b><p data-i18n="st.g4.1d">Plugins update the chat and memory without a pop-up each time.</p></div><span class="st-v off" data-i18n="st.g4.1v">Off</span></div>
+      <div class="st-row"><div><b>Send & generate</b><p data-i18n="st.g4.2d">Stained Glass can draw by itself. Turn these on if you want to approve everything by hand.</p></div><span class="st-v off" data-i18n="st.g4.2v">Off</span></div>
+    </div>
+    <div class="st-grp"><h4 data-i18n="st.g5">Model tool settings</h4>
+      <div class="st-row"><div><b>Enable tools</b><p data-i18n="st.g5.0d">The model can call tools — search, plugins.</p></div><span class="st-v on" data-i18n="st.g5.0v">On</span></div>
+      <div class="st-row"><div><b>Load tools dynamically</b><p data-i18n="st.g5.1d">Only the tools a scene needs — less context spent.</p></div><span class="st-v on" data-i18n="st.g5.1v">On</span></div>
+      <div class="st-row"><div><b>Hide tool calls</b><p data-i18n="st.g5.2d">Calls still run, but don’t clutter the story.</p></div><span class="st-v on" data-i18n="st.g5.2v">On</span></div>
+      <div class="st-row"><div><b>Web search API</b><p data-i18n="st.g5.3d">Any working search.</p></div><span class="st-v mute" data-i18n="st.g5.3v">Web Search API 1</span></div>
+    </div>
+    <div class="st-api"><div class="st-api-h"><h4 data-i18n="st.api">API parameters · Gemini 4 Argon</h4><button class="btn ghost st-copy" type="button" data-i18n="st.copy">Copy</button></div>
+      <pre id="st-json">{
+  &quot;max_tokens&quot;: 32768,
+  &quot;extra_body&quot;: {
+    &quot;google&quot;: {
+      &quot;thinking_config&quot;: {
+        &quot;thinking_level&quot;: &quot;medium&quot;,
+        &quot;include_thoughts&quot;: true
+      },
+      &quot;safety_settings&quot;: [
+        {
+          &quot;category&quot;: &quot;HARM_CATEGORY_HARASSMENT&quot;,
+          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
+        },
+        {
+          &quot;category&quot;: &quot;HARM_CATEGORY_HATE_SPEECH&quot;,
+          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
+        },
+        {
+          &quot;category&quot;: &quot;HARM_CATEGORY_SEXUALLY_EXPLICIT&quot;,
+          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
+        },
+        {
+          &quot;category&quot;: &quot;HARM_CATEGORY_DANGEROUS_CONTENT&quot;,
+          &quot;threshold&quot;: &quot;BLOCK_NONE&quot;
+        }
+      ]
+    }
+  }
+}</pre>
+      <ul class="st-notes">
+        <li data-i18n="st.a1"><code>thinking_level: medium</code> — the model’s default, the balance of speed and depth. Argon takes <code>low</code>, <code>medium</code> or <code>high</code> (no <code>minimal</code>, and thinking can’t be switched off). For long, tangled scenes try <code>high</code>: slower, but holds threads better.</li>
+        <li data-i18n="st.a2"><code>include_thoughts: true</code> — needed for the “author’s draft” above the reply.</li>
+        <li data-i18n="st.a3"><code>max_tokens: 32768</code> — thinking counts toward this limit too, so don’t lower it below 16000.</li>
+        <li data-i18n="st.a4"><code>safety_settings</code> — on Gemini 4 Argon the filters are already off by default; the block doesn’t hurt, it just makes it explicit.</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</dialog>
 <div class="lightbox" id="lightbox" hidden><img alt=""><button aria-label="Close">×</button></div>
 <script src="files.js?v=6"></script>
-<script src="i18n.js?v=72"></script>
-<script src="app.js?v=74"></script>
+<script src="i18n.js?v=73"></script>
+<script src="app.js?v=75"></script>
 </body>
 </html>
