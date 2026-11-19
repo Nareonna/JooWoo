@@ -78,7 +78,7 @@
     function vtxt(i){return (i.ver?'v'+i.ver+' · ':'')+i.date.slice(0,5)}
     function dln(i){return (i.dl&&i.dl[l])||i[l]}
     function short(i){return i.name[l].replace(/^(Плагин|Тема|Регексы|Пресет|Лорбук)\s+/,'').replace(/\s+(plugin|theme|preset|lorebook)$/i,'').replace(/^Regex\s+/,'').replace(/^\d\s·\s/,'')+(i.ver?' '+i.ver:'')}
-    [].forEach.call(document.querySelectorAll('[data-f]'),function(a){var i=by[a.dataset.f];if(i){a.setAttribute('href','files/'+i[l]);a.setAttribute('download',dln(i))}});
+    [].forEach.call(document.querySelectorAll('[data-f]'),function(a){var i=by[a.dataset.f];if(i){a.setAttribute('href','files/'+i[l]);a.setAttribute('download',dln(i));var vb=a.querySelector('b');if(vb&&i.ver)vb.textContent=i.ver}});
     [].forEach.call(document.querySelectorAll('[data-v]'),function(s){var i=by[s.dataset.v];if(!i)return;s.innerHTML=vtxt(i)+(isNew(i)?'<em>'+T.nw+'</em>':'');s.classList.toggle('new',isNew(i))});
     var sk=root.dataset.skin==='camellia'?1:root.dataset.skin==='lilac'?2:0;
     [].forEach.call(document.querySelectorAll('[data-fsk]'),function(a){var i=by[a.dataset.fsk.split('|')[sk]];if(i){a.setAttribute('href','files/'+i[l]);a.setAttribute('download',dln(i))}});
@@ -129,22 +129,24 @@
     try{done=localStorage.getItem('jw-sub')==='1'}catch(e){}
     function id(){var v;try{v=localStorage.getItem('jw-sid')}catch(e){}if(!v){v='';var a=new Uint8Array(16);crypto.getRandomValues(a);a.forEach(function(b){v+=('0'+b.toString(16)).slice(-2)});try{localStorage.setItem('jw-sid',v)}catch(e){}}return v}
     function word(k,ru){if(!ru)return k===1?'subscriber':'subscribers';var a=k%10,b=k%100;return a===1&&b!==11?'подписчик':a>=2&&a<=4&&(b<12||b>14)?'подписчика':'подписчиков'}
-    /* замок: только когда облако ответило — если оно недоступно, файлы не закрываем */
-    function locked(){return n!=null&&!done}
-    function draw(){root.classList.toggle('jw-locked',locked());if(n==null)return;var ru=root.lang==='ru';boxes.forEach(function(x){x.hidden=false;x.classList.toggle('done',done);
+    /* замок: без подписки файлы закрыты всегда. Облако недоступно (в РФ workers.dev часто режут) — подписка засчитается позже */
+    function locked(){return !done}
+    function draw(){root.classList.toggle('jw-locked',locked());var ru=root.lang==='ru';boxes.forEach(function(x){x.hidden=false;x.classList.toggle('done',done);x.querySelector('.sub-n').hidden=n==null;
       x.querySelector('.sub-l').textContent=done?(ru?'Ты с нами':'You’re with us'):(ru?'Подписаться':'Subscribe');x.querySelector('.sub-btn').disabled=done||busy;
-      x.querySelector('.sub-n b').textContent=n.toLocaleString(ru?'ru-RU':'en-US');x.querySelector('.sub-n small').textContent=word(n,ru)})}
+      if(n!=null){x.querySelector('.sub-n b').textContent=n.toLocaleString(ru?'ru-RU':'en-US');x.querySelector('.sub-n small').textContent=word(n,ru)}})}
     function fire(){if(!pend)return;var a=document.createElement('a');a.href=pend.h;a.download=pend.n;document.body.appendChild(a);a.click();a.remove();pend=null}
     function unlock(){done=true;try{localStorage.setItem('jw-sub','1')}catch(e){}
       if(gate&&gate.open){gate.classList.add('ok');setTimeout(function(){gate.close();gate.classList.remove('ok')},1300)}fire()}
+    function send(){return fetch(SUB_URL+'/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id()})}).then(function(r){return r.json()}).then(function(d){if(!d.ok)throw 0;n=d.count;try{localStorage.removeItem('jw-sub-pend')}catch(e){}})}
     function go(){if(done||busy)return;busy=true;draw();
-      fetch(SUB_URL+'/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id()})}).then(function(r){return r.json()}).then(function(d){if(d.ok){n=d.count;unlock()}else throw 0})
-        .catch(function(){unlock()}).then(function(){busy=false;draw()})}
+      send().catch(function(){try{localStorage.setItem('jw-sub-pend','1')}catch(e){}}).then(function(){unlock();busy=false;draw()})}
     boxes.forEach(function(x){x.querySelector('.sub-btn').addEventListener('click',go)});
     document.addEventListener('click',function(e){var a=e.target.closest('a[href^="files/"]');if(!a||!locked()||!gate)return;
       e.preventDefault();pend={h:a.getAttribute('href'),n:a.getAttribute('download')||''};draw();if(!gate.open)gate.showModal?gate.showModal():gate.setAttribute('open','')},true);
     if(gate){gate.querySelector('.dlg-x').addEventListener('click',function(){gate.close()});gate.addEventListener('click',function(e){if(e.target===gate)gate.close()});gate.addEventListener('close',function(){if(!done)pend=null})}
-    if(SUB_URL&&boxes.length)fetch(SUB_URL+'/count').then(function(r){return r.json()}).then(function(d){n=d.count;draw()}).catch(function(){});
+    var late=false;try{late=localStorage.getItem('jw-sub-pend')==='1'}catch(e){}
+    if(SUB_URL)(late&&done?send():Promise.reject()).catch(function(){return fetch(SUB_URL+'/count').then(function(r){return r.json()}).then(function(d){n=d.count})}).then(draw,draw);
+    draw();
     return draw})();
 
   (function(){var b=document.getElementById('top');function f(){root.style.setProperty('--barh',b.offsetHeight+'px')}f();addEventListener('resize',f)})();

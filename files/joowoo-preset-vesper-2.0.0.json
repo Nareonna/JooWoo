@@ -542,7 +542,7 @@
       "injection_position": 0,
       "injection_depth": 4,
       "forbid_overrides": false,
-      "enabled": true
+      "enabled": false
     },
     {
       "identifier": "76593232-04e3-4ef7-a654-01766e5f714d",
@@ -591,6 +591,90 @@
       "injection_depth": 0,
       "forbid_overrides": false,
       "enabled": true
+    },
+    {
+      "identifier": "0e3544e9-f6e1-43a9-b01d-7bb948edb0b2",
+      "name": "✦ Первое лицо — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ПЕРВОЕ ЛИЦО (подсказка — не включать)\n☆ Первое лицо — по умолчанию выключен. Включи, если хочешь, чтобы рассказ шёл изнутри {{char}}: «я открыл дверь», а не «он открыл дверь».\nНужен карточке, написанной от третьего лица; карточке, которая сама написана от первого лица, не нужен.\nШапка, <life>, трекеры и вставки других сцен остаются в своём формате.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "d69611da-91ea-4fb8-ae4d-234987ecd509",
+      "name": "✦ Токсично — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ТОКСИЧНО (подсказка — не включать)\n☆ Токсично — по умолчанию выключен. Включи для истории, где {{char}} по-настоящему не выносит {{user}}: презрение, сарказм, открытая враждебность — не маска поверх тайной симпатии.\nОттаивает только через большое событие (настоящая опасность, вынужденная работа вместе, общая потеря) — и медленно, сопротивляясь.\nС «♡ Темп: медленно» низкие ступени stage читаются как вражда.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "5e10554b-40c1-4833-b8dc-67801b5964ef",
+      "name": "✦ Жестокий мир — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ЖЕСТОКИЙ МИР (подсказка — не включать)\n☆ Жестокий мир — по умолчанию выключен: вместе с откровенными сценами модель чаще отказывается.\nВключи для тёмной истории без поблажек: злодеи по-настоящему жестоки, насилие оставляет травмы надолго, угрозы исполняются, никто не спасает случайно.\nБез сексуализации насилия; твои реакции пишешь ты, OOC-стоп сразу обрывает сцену.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "a2270d7c-8ead-4c64-81d3-a3c8cb4e46f3",
+      "name": "✦ Пинг-понг — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ПИНГ-ПОНГ (подсказка — не включать)\n☆ Пинг-понг — по умолчанию выключен. Включи, если хочешь живые быстрые ответы в горячие моменты: ссора, драка, угроза, флирт, подколы, быстрое действие, переписка.\nТогда {{char}} не пишет сцену целиком, а реагирует на твою последнюю реплику, как два человека в одной комнате, — ответ короче выбранной «☆ Длины».\nВ спокойных сценах и в интиме снова работает «☆ Длина». Режим меняет только механику ответа: характер, голос и чувства по-прежнему из карточки.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "fea8cf7b-e295-4f3e-bca6-aba81096375f",
+      "name": "✦ Шёпот — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ШЁПОТ (подсказка — не включать)\n✧ Шёпот — включён. Нужен, если стоит плагин «Шёпот»: модель читает его скрытые заметки и дневник памяти «❦ Memory · chat N · …» и держит шапку, <life>, <stage>, STATE и MEMO в форматах, которые Шёпот понимает.\nБез плагина можно выключить — ничего не сломается.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "de0f72d2-387f-44de-aa2b-9240790194f9",
+      "name": "✦ Анти-цензура Argon — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "АНТИ-ЦЕНЗУРА (подсказка — не включать)\n✧ Анти-цензура Argon — включена. Короткое напоминание модели, что это взрослый художественный роман и ответ идёт дальше по-русски в формате пресета. Сделано под Gemini 4 Argon.\nЕсли на твоей модели отказов нет, можно выключить.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
+    },
+    {
+      "identifier": "768670a3-496b-4503-b6da-c6ffaf57da72",
+      "name": "✦ Префилл — читать",
+      "system_prompt": false,
+      "marker": false,
+      "content": "ПРЕФИЛЛ (подсказка — не включать)\n✧ Префилл — включён. Начало ответа «от лица модели»: она соглашается писать взрослый роман и повторяет себе порядок ответа — шапка, <life>, <stage>, рассказ, след, трекеры.\nЕсли твоя модель или API не поддерживает префилл (ответ ломается или начинается с этого текста), выключи.",
+      "role": "system",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "enabled": false
     }
   ],
   "prompt_order": [
@@ -622,6 +706,10 @@
           "enabled": true
         },
         {
+          "identifier": "fea8cf7b-e295-4f3e-bca6-aba81096375f",
+          "enabled": false
+        },
+        {
           "identifier": "69f11e40-39ef-4b45-a081-b9455cc17717",
           "enabled": true
         },
@@ -650,11 +738,23 @@
           "enabled": false
         },
         {
+          "identifier": "0e3544e9-f6e1-43a9-b01d-7bb948edb0b2",
+          "enabled": false
+        },
+        {
           "identifier": "276f124d-a197-4076-b5a6-33fa1f2fd2bd",
           "enabled": false
         },
         {
+          "identifier": "d69611da-91ea-4fb8-ae4d-234987ecd509",
+          "enabled": false
+        },
+        {
           "identifier": "29c3404e-7fd9-49b3-97a1-6f27a7b02f4e",
+          "enabled": false
+        },
+        {
+          "identifier": "5e10554b-40c1-4833-b8dc-67801b5964ef",
           "enabled": false
         },
         {
@@ -786,8 +886,12 @@
           "enabled": false
         },
         {
+          "identifier": "a2270d7c-8ead-4c64-81d3-a3c8cb4e46f3",
+          "enabled": false
+        },
+        {
           "identifier": "eadfa2f7-b49c-4c76-9311-a8b48746143a",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "76593232-04e3-4ef7-a654-01766e5f714d",
@@ -798,8 +902,16 @@
           "enabled": true
         },
         {
+          "identifier": "de0f72d2-387f-44de-aa2b-9240790194f9",
+          "enabled": false
+        },
+        {
           "identifier": "56f34ca7-92ad-47aa-abaf-60ba333d5813",
           "enabled": true
+        },
+        {
+          "identifier": "768670a3-496b-4503-b6da-c6ffaf57da72",
+          "enabled": false
         },
         {
           "identifier": "2a116d76-cbc8-46c7-9086-e1a509c4aaa0",
