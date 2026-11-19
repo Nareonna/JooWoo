@@ -462,3 +462,19 @@ html[data-skin=camellia] .hero-bg::after{background:radial-gradient(72% 62% at 5
 html.dlg-on{overflow:hidden}
 @keyframes dlg-in{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
 @media (max-width:600px){.setup-dlg{width:100vw;max-width:100vw;max-height:100dvh;height:100dvh;border-radius:0;margin:0}.dlg-in{padding-top:56px}}
+
+/* ═══ замок на файлах ═══ */
+html.jw-locked a[href^="files/"]{position:relative}
+html.jw-locked a[href^="files/"]:not(.vr-dl)::before{content:'🔒';font-size:.85em;margin-right:7px;filter:grayscale(1) brightness(1.6);opacity:.8}
+html.jw-locked a.vr-dl[href^="files/"]::after{content:'🔒';position:absolute;right:-4px;top:-6px;font-size:11px;filter:grayscale(1) brightness(1.6)}
+.gate{width:min(440px,calc(100vw - 28px));padding:0;border:1px solid var(--line);border-radius:26px;background:var(--bg2);color:var(--text);box-shadow:0 30px 90px rgba(0,0,0,.6);overflow:visible}
+.gate[open]{animation:dlg-in .35s ease}
+.gate::backdrop{background:rgba(0,0,0,.66);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.gate-in{padding:40px 30px 28px;text-align:center}
+.gate-ic{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;font-size:30px;color:var(--a1);border:1px solid color-mix(in srgb,var(--a1) 45%,transparent);box-shadow:0 0 40px var(--glow);animation:beat 2.4s ease-in-out infinite}
+.gate h3{margin:4px 0 10px;font:italic 700 28px/1.2 var(--title)}
+.gate-in>p{color:var(--mute);margin:0 0 6px}
+.gate-subs{display:inline-flex;margin:18px auto 6px}
+.gate-ok{display:none;color:var(--a1)!important;font:italic 600 17px var(--title);margin-top:12px!important}
+.gate.ok .gate-ok{display:block}.gate.ok .gate-ic{animation:beat .8s ease-in-out 2}
+.gate-tg{margin-top:14px!important;font-size:13px}

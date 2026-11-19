@@ -124,16 +124,25 @@
 
   /* ── подписчики: счётчик в облаке (tools/subs-worker.js). Пустой адрес — кнопки не видно ── */
   var SUB_URL='https://joowoo-subs.sunandesu2002.workers.dev';
-  window.jwSubs=(function(){var n=null,done=false,busy=false,boxes=[].slice.call(document.querySelectorAll('.subs'));
+  window.jwSubs=(function(){var n=null,done=false,busy=false,pend=null,boxes=[].slice.call(document.querySelectorAll('.subs')),gate=document.getElementById('gate');
     try{done=localStorage.getItem('jw-sub')==='1'}catch(e){}
     function id(){var v;try{v=localStorage.getItem('jw-sid')}catch(e){}if(!v){v='';var a=new Uint8Array(16);crypto.getRandomValues(a);a.forEach(function(b){v+=('0'+b.toString(16)).slice(-2)});try{localStorage.setItem('jw-sid',v)}catch(e){}}return v}
     function word(k,ru){if(!ru)return k===1?'subscriber':'subscribers';var a=k%10,b=k%100;return a===1&&b!==11?'подписчик':a>=2&&a<=4&&(b<12||b>14)?'подписчика':'подписчиков'}
-    function draw(){if(n==null)return;var ru=root.lang==='ru';boxes.forEach(function(x){x.hidden=false;x.classList.toggle('done',done);
+    /* замок: только когда облако ответило — если оно недоступно, файлы не закрываем */
+    function locked(){return n!=null&&!done}
+    function draw(){root.classList.toggle('jw-locked',locked());if(n==null)return;var ru=root.lang==='ru';boxes.forEach(function(x){x.hidden=false;x.classList.toggle('done',done);
       x.querySelector('.sub-l').textContent=done?(ru?'Ты с нами':'You’re with us'):(ru?'Подписаться':'Subscribe');x.querySelector('.sub-btn').disabled=done||busy;
       x.querySelector('.sub-n b').textContent=n.toLocaleString(ru?'ru-RU':'en-US');x.querySelector('.sub-n small').textContent=word(n,ru)})}
+    function fire(){if(!pend)return;var a=document.createElement('a');a.href=pend;a.download='';document.body.appendChild(a);a.click();a.remove();pend=null}
+    function unlock(){done=true;try{localStorage.setItem('jw-sub','1')}catch(e){}
+      if(gate&&gate.open){gate.classList.add('ok');setTimeout(function(){gate.close();gate.classList.remove('ok')},1300)}fire()}
     function go(){if(done||busy)return;busy=true;draw();
-      fetch(SUB_URL+'/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id()})}).then(function(r){return r.json()}).then(function(d){if(d.ok){n=d.count;done=true;try{localStorage.setItem('jw-sub','1')}catch(e){}}}).catch(function(){}).then(function(){busy=false;draw()})}
+      fetch(SUB_URL+'/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id()})}).then(function(r){return r.json()}).then(function(d){if(d.ok){n=d.count;unlock()}else throw 0})
+        .catch(function(){unlock()}).then(function(){busy=false;draw()})}
     boxes.forEach(function(x){x.querySelector('.sub-btn').addEventListener('click',go)});
+    document.addEventListener('click',function(e){var a=e.target.closest('a[href^="files/"]');if(!a||!locked()||!gate)return;
+      e.preventDefault();pend=a.getAttribute('href');draw();if(!gate.open)gate.showModal?gate.showModal():gate.setAttribute('open','')},true);
+    if(gate){gate.querySelector('.dlg-x').addEventListener('click',function(){gate.close()});gate.addEventListener('click',function(e){if(e.target===gate)gate.close()});gate.addEventListener('close',function(){if(!done)pend=null})}
     if(SUB_URL&&boxes.length)fetch(SUB_URL+'/count').then(function(r){return r.json()}).then(function(d){n=d.count;draw()}).catch(function(){});
     return draw})();
 
