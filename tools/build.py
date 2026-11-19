@@ -49,7 +49,7 @@ for it in V['items']:
             out = os.path.join(FILES, it[L])
             with zipfile.ZipFile(out + '.tmp', 'w', zipfile.ZIP_DEFLATED) as z:
                 for m in it['has']:
-                    z.write(os.path.join(FILES, by[m][L]), by[m][L])
+                    z.write(os.path.join(FILES, by[m][L]), (by[m].get('dl') or {}).get(L) or by[m][L])
             os.replace(out + '.tmp', out)
 for a in V['archive']:
     for L in ('ru', 'en'):
