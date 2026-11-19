@@ -15,6 +15,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Cormorant+SC:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=77">
 <script>try{var s=localStorage.getItem('jw-skin');if(s)document.documentElement.dataset.skin=s;var l=localStorage.getItem('jw-lang');if(l)document.documentElement.lang=l;var g=(location.search.match(/[?&]genre=([a-z]+)/)||[])[1]||localStorage.getItem('jw-genre');if(g)document.documentElement.dataset.genre=g}catch(e){}</script>
+<style>
+/* Quick start uses the same palette as the active JooWoo theme. */
+html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
+.jw-start.sec { padding-top: clamp(40px, 6vw, 80px); }
+.jw-start .sec-head { margin-bottom: 30px; }
+.jw-start-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; max-width: 1080px; margin-inline: auto; }
+.jw-kit, .jw-install { min-width: 0; padding: clamp(20px, 4vw, 38px); border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, color-mix(in srgb, var(--a1) 11%, transparent), transparent 64%), var(--bg); }
+.jw-start h3 { margin: 0 0 20px; color: var(--text); font: italic 700 clamp(24px, 3vw, 33px)/1.15 var(--title); }
+.jw-theme-pick { display: grid; gap: 9px; }
+.jw-choice { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 66px; padding: 7px 12px 7px 7px; }
+.jw-choice img { width: 70px; height: 50px; border-radius: 10px; object-fit: cover; }
+.jw-choice strong, .jw-choice small { display: block; }
+.jw-choice strong { font: 600 15px/1.25 var(--sc); letter-spacing: .09em; }
+.jw-choice small { margin-top: 3px; color: var(--mute); font: 14px/1.35 var(--fine); letter-spacing: 0; }
+.jw-choice.on { box-shadow: inset 3px 0 var(--a1); }
+.jw-choice:focus-visible, .jw-start a:focus-visible, .jw-start button:focus-visible { outline: 2px solid var(--a1); outline-offset: 3px; }
+.jw-kit-actions { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin-top: 22px; }
+.jw-text-link { color: var(--a1); text-decoration: underline; text-underline-offset: .2em; font-size: 1rem; }
+.jw-start .jw-kit-contents { margin: 14px 0 0; line-height: 1.5; }
+.jw-checklist { margin: 0 0 22px; padding-left: 1.45em; }
+.jw-checklist li { padding-left: 5px; margin-bottom: 13px; }
+.jw-checklist li::marker { color: var(--a1); }
+.jw-checklist p { margin: 4px 0 0; color: var(--mute); font-size: 1rem; line-height: 1.5; }
+.jw-extra { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; max-width: 1080px; margin: 18px auto 0; padding: 14px clamp(20px, 4vw, 38px); border: 1px solid var(--line); border-radius: 18px; }
+.jw-extra p { margin: 0; line-height: 1.5; }
+@media (max-width: 720px) {
+  .jw-start-grid { grid-template-columns: 1fr; }
+  .jw-kit, .jw-install { border-radius: 20px; }
+  .jw-kit-actions .btn { width: 100%; justify-content: center; }
+}
+</style>
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
@@ -53,22 +84,12 @@
     <p class="tagline"><em class="t-mid" data-i18n="hero.tag">the coffee went cold — the stars did not</em><em class="t-cam" data-i18n="hero.tag2">a camellia falls whole, not petal by petal</em><em class="t-lil" data-i18n="hero.tag3">the lilac hour, with nowhere left to be</em></p>
     <p class="lead" data-i18n="hero.lead">Themes, presets, traces and plugins for living roleplay in Tavo. Everything is written from scratch, tested in real chats and kept up to date.</p>
     <div class="cta">
-      <a class="btn" href="#themes" data-i18n="hero.cta">See the themes</a>
+      <a class="btn jw-first-steps" href="#start" data-mode="realism"><span lang="en" class="jw-en">Get started</span><span lang="ru" class="jw-ru">Начать установку</span></a>
+      <a class="btn ghost" href="#files"><span lang="en" class="jw-en">Downloads</span><span lang="ru" class="jw-ru">Скачать файлы</span></a>
       <a class="btn ghost" href="https://t.me/joowoowa" target="_blank" rel="noopener">Telegram</a>
     </div>
     <div class="subs" hidden><button class="sub-btn" type="button"><span class="sub-h">♡</span><span class="sub-l"></span></button><span class="sub-n"><b></b> <small></small></span></div>
-    <div class="doors" role="group" aria-label="Theme">
-      <button class="door" data-set="midnight"><img src="img/hero-midnight.webp" alt=""><span><b>MIDNIGHT LATTE</b><small data-i18n="door.mid">coffee · stars · candles</small></span></button>
-      <button class="door" data-set="camellia"><img src="img/hero-camellia.webp" alt=""><span><b>MOON CAMELLIA</b><small data-i18n="door.cam">water · smoke · camellias</small></span></button>
-      <button class="door" data-set="lilac"><img src="img/door-lilac.webp" alt=""><span><b>LILAC HOUR</b><small data-i18n="door.lil">dusk · lavender · lamplight</small></span></button>
-    </div>
   </div>
-  <ul class="stats">
-    <li><b>3</b><span data-i18n="stat.themes">themes</span></li>
-    <li><b>1</b><span data-i18n="stat.preset">preset · 2 languages</span></li>
-    <li><b>14</b><span data-i18n="stat.plates">traces</span></li>
-    <li><b>4</b><span data-i18n="stat.plugins">plugins</span></li>
-  </ul>
 </section>
 
 <!-- ═══ ВКЛАДКИ ═══ -->
@@ -84,6 +105,42 @@
   <button class="tab-gear" type="button" data-open-setup><i>⚙</i><span data-i18n="tb.setup">Settings</span></button>
 </div></nav>
 
+<!-- ═══ QUICK START ═══ -->
+<section class="sec qs-sec jw-start" id="start" data-panel="home" data-mode="realism">
+  <header class="sec-head">
+    <h2><span lang="en" class="jw-en">Set up JooWoo in Tavo</span><span lang="ru" class="jw-ru">Настрой JooWoo в Tavo</span></h2>
+    <p><span lang="en" class="jw-en">Choose a theme and download the matching starter kit.</span><span lang="ru" class="jw-ru">Выбери тему и скачай готовый комплект для неё.</span></p>
+  </header>
+  <div class="jw-start-grid">
+    <div class="jw-kit">
+      <h3><span lang="en" class="jw-en">Choose your theme</span><span lang="ru" class="jw-ru">Выбор темы</span></h3>
+      <div class="jw-theme-pick">
+        <button class="qs-skin jw-choice" type="button" data-set="midnight"><img src="img/hero-midnight.webp" alt="" loading="lazy"><span><strong>MIDNIGHT LATTE</strong><small><span lang="en" class="jw-en">Coffee &amp; stars</span><span lang="ru" class="jw-ru">Кофе и звёзды</span></small></span></button>
+        <button class="qs-skin jw-choice" type="button" data-set="camellia"><img src="img/hero-camellia.webp" alt="" loading="lazy"><span><strong>MOON CAMELLIA</strong><small><span lang="en" class="jw-en">Moonlit water</span><span lang="ru" class="jw-ru">Вода в лунном свете</span></small></span></button>
+        <button class="qs-skin jw-choice" type="button" data-set="lilac"><img src="img/door-lilac.webp" alt="" loading="lazy"><span><strong>LILAC HOUR</strong><small><span lang="en" class="jw-en">Lavender dusk</span><span lang="ru" class="jw-ru">Сиреневые сумерки</span></small></span></button>
+      </div>
+      <div class="jw-kit-actions">
+        <a class="btn" href="files/joowoo-midnight-all-en.zip" data-fsk="all1|all2|all3" download><span lang="en" class="jw-en">Download the kit</span><span lang="ru" class="jw-ru">Скачать комплект</span></a>
+        <a class="jw-text-link" href="#files"><span lang="en" class="jw-en">Individual files</span><span lang="ru" class="jw-ru">Отдельные файлы</span></a>
+      </div>
+      <p class="vline jw-kit-contents" data-hsk="all1|all2|all3"></p>
+    </div>
+    <div class="jw-install">
+      <h3><span lang="en" class="jw-en">Import into Tavo</span><span lang="ru" class="jw-ru">Установка в Tavo</span></h3>
+      <ol class="jw-checklist">
+        <li><strong><span lang="en" class="jw-en">Unzip the kit</span><span lang="ru" class="jw-ru">Распакуй комплект</span></strong><p><span lang="en" class="jw-en">It contains the theme, Vesper, the Traces lorebook and two regex sets.</span><span lang="ru" class="jw-ru">Внутри тема, Vesper, лорбук «Следы» и два набора регексов.</span></p></li>
+        <li><strong><span lang="en" class="jw-en">Import and select the files</span><span lang="ru" class="jw-ru">Импортируй файлы и выбери их для чата</span></strong><p><span lang="en" class="jw-en">Add the theme, preset and lorebook in their Tavo sections. Enable Core and the regex set for your chosen theme.</span><span lang="ru" class="jw-ru">Добавь тему, пресет и лорбук в соответствующих разделах Tavo. Подключи «Основу» и набор регексов для выбранной темы.</span></p></li>
+        <li><strong><span lang="en" class="jw-en">Turn on Advanced Rendering</span><span lang="ru" class="jw-ru">Включи Advanced Rendering</span></strong><p><span lang="en" class="jw-en">This chat setting lets Tavo display the styled traces.</span><span lang="ru" class="jw-ru">Эта настройка чата нужна для отображения плашек.</span></p></li>
+      </ol>
+      <button class="btn ghost" type="button" data-open-setup><span lang="en" class="jw-en">Open Tavo setup guide</span><span lang="ru" class="jw-ru">Открыть настройки Tavo</span></button>
+    </div>
+  </div>
+  <aside class="jw-extra">
+    <p><strong><span lang="en" class="jw-en">Optional plugins</span><span lang="ru" class="jw-ru">Дополнительные плагины</span></strong><br><span lang="en" class="jw-en">Whisper keeps the story’s memory. Stained Glass illustrates scenes.</span><span lang="ru" class="jw-ru">«Шёпот» хранит память истории. «Витраж» иллюстрирует сцены.</span></p>
+    <a class="jw-text-link" href="#plugins"><span lang="en" class="jw-en">Explore plugins</span><span lang="ru" class="jw-ru">Посмотреть плагины</span></a>
+  </aside>
+</section>
+
 <!-- ═══ ЖАНРЫ ═══ -->
 <section class="sec genre-sec" id="genre" data-panel="home">
   <header class="sec-head"><p class="kicker" data-i18n="gn.kicker">✦ genre</p><h2 data-i18n="gn.title">Which story are you telling?</h2><p data-i18n="gn.lead">Each genre gets its own preset and its own files. The plugins work in any of them.</p></header>
@@ -96,21 +153,6 @@
     <p class="soon-d small" data-i18n="gn.soonp">Meanwhile the plugins already work here: Whisper keeps the memory, Stained Glass draws the pictures.</p>
     <div class="dl center"><a class="btn" href="#plugins" data-i18n="gn.toplug">To the plugins</a><a class="btn ghost" href="https://t.me/joowoowa" target="_blank" rel="noopener">Telegram</a></div>
   </div>
-</section>
-
-<!-- ═══ QUICK START ═══ -->
-<section class="sec qs-sec" id="start" data-panel="home" data-mode="realism">
-  <header class="sec-head"><p class="kicker" data-i18n="qs.kicker">✦ quick start</p><h2 data-i18n="qs.title">Four steps and you're in</h2></header>
-  <ol class="qs reveal">
-    <li><b>1</b><h4 data-i18n="qs.1t">Pick a night</h4><p data-i18n="qs.1d">The whole site switches with it — screenshots, files, colours.</p>
-      <div class="qs-pick"><button class="qs-skin" data-set="midnight">☕ MIDNIGHT LATTE</button><button class="qs-skin" data-set="camellia">✿ MOON CAMELLIA</button><button class="qs-skin" data-set="lilac">☾ LILAC HOUR</button></div></li>
-    <li><b>2</b><h4 data-i18n="qs.2t">Take everything in one archive</h4><p data-i18n="qs.2d">Theme, regex sets, the traces lorebook and the Vesper preset — matched to each other.</p>
-      <a class="btn" href="files/joowoo-midnight-all-en.zip" data-fsk="all1|all2|all3" download data-i18n="qs.2b">Download the archive</a><p class="vline" data-hsk="all1|all2|all3"></p></li>
-    <li><b>3</b><h4 data-i18n="qs.3t">Import into Tavo</h4><p data-i18n="qs.3d">Theme — in appearance, regex sets 1 and your theme's set — in regex, the lorebook and the preset — each in its own place. Then turn on Advanced Rendering in the chat settings.</p>
-      <button class="btn ghost" type="button" data-open-setup data-i18n="qs.3b">Tavo settings</button></li>
-    <li><b>4</b><h4 data-i18n="qs.4t">Add the plugins</h4><p data-i18n="qs.4d">Whisper keeps memory and threads, Stained Glass draws the pictures.</p>
-      <div class="qs-pl"><a class="btn ghost" href="files/joowoo-shepot-2.0.0.tpg" data-f="shepot" download><span data-i18n="qs.4a">Whisper</span> <span class="ver" data-v="shepot"></span></a><a class="btn ghost" href="files/joowoo-vitrazh-2.0.0.tpg" data-f="vitrazh" download><span data-i18n="qs.4b">Stained Glass</span> <span class="ver" data-v="vitrazh"></span></a></div></li>
-  </ol>
 </section>
 
 <!-- ═══ THEMES ═══ -->
@@ -488,5 +530,20 @@
 <script src="files.js?v=7"></script>
 <script src="i18n.js?v=76"></script>
 <script src="app.js?v=79"></script>
+<script>
+(function () {
+  var choices = document.querySelectorAll('.jw-choice');
+  function syncSelectedTheme() {
+    var theme = document.documentElement.dataset.skin;
+    choices.forEach(function (choice) {
+      choice.setAttribute('aria-pressed', String(choice.dataset.set === theme));
+    });
+  }
+  syncSelectedTheme();
+  new MutationObserver(syncSelectedTheme).observe(document.documentElement, {
+    attributeFilter: ['data-skin']
+  });
+}());
+</script>
 </body>
 </html>
