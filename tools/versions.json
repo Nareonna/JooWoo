@@ -354,7 +354,19 @@
     "ru": "живые люди, города и будни",
     "en": "real people, real cities, ordinary days"
    },
-   "preset": "Vesper"
+   "preset": "Vesper",
+   "models": [
+    {
+     "id": "argon",
+     "name": "Gemini 4 Argon",
+     "file": "preset"
+    },
+    {
+     "id": "neon",
+     "name": "Gemini 4 Neon",
+     "file": "preset-neon"
+    }
+   ]
   },
   {
    "id": "soon",
