@@ -107,9 +107,22 @@
       return '<button class="genre'+(on?' on':'')+(m.soon?' is-soon':'')+'" role="tab" aria-selected="'+on+'" data-genre="'+m.id+'"><span class="g-ic">'+(m.icon||'✦')+'</span><b>'+m.name[l]+'</b><small>'+(m.tag?m.tag[l]:'')+'</small>'+sub+'</button>'}).join('');
     var cur=modes().filter(function(m){return m.id===g})[0]||{},sn=document.getElementById('soon');
     if(sn){sn.hidden=!cur.soon;if(cur.soon){sn.querySelector('.soon-ic').textContent=cur.icon||'✦';sn.querySelector('.soon-t').textContent=l==='ru'?'Скоро выйдет':'Coming soon'}}}
+  /* ── модель внутри жанра (Argon / Neon). Список — tools/versions.json → modes[].models; модель готова, когда в items есть её file ── */
+  try{var sm=(location.search.match(/[?&]model=([a-z]+)/)||[])[1]||localStorage.getItem('jw-model');if(sm)root.dataset.model=sm}catch(e){}
+  function models(){var g=jwGenre(),m=modes().filter(function(x){return x.id===g})[0];return (m&&m.models)||[]}
+  function mReady(m){var F=window.JW_FILES;return !!(F&&F.items.some(function(i){return i.id===m.file}))}
+  window.jwModel=function(){var M=models(),v=root.dataset.model;return M.some(function(m){return m.id===v})?v:(M[0]?M[0].id:'')};
+  function renderModels(){var l=root.lang==='ru'?'ru':'en',M=models(),cur=jwModel(),cm=M.filter(function(m){return m.id===cur})[0],ready=cm?mReady(cm):true;
+    [].forEach.call(document.querySelectorAll('[data-models]'),function(box){box.hidden=M.length<2;var w=box.closest('.mdl-wrap');if(w)w.hidden=M.length<2;
+      box.innerHTML=M.map(function(m){var on=m.id===cur;return '<button type="button" role="tab" aria-selected="'+on+'"'+(on?' class="on"':'')+' data-model-set="'+m.id+'">'+m.name+(mReady(m)?'':'<em>'+(l==='ru'?'тест':'test')+'</em>')+'</button>'}).join('')});
+    [].forEach.call(document.querySelectorAll('[data-model]'),function(el){el.hidden=!!cur&&el.dataset.model!==cur});
+    [].forEach.call(document.querySelectorAll('[data-mtest]'),function(el){el.hidden=ready});
+    [].forEach.call(document.querySelectorAll('[data-mready]'),function(el){el.hidden=!ready})}
+  function setModel(id){root.dataset.model=id;try{localStorage.setItem('jw-model',jwModel())}catch(e){}renderModels()}
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-model-set]');if(b){e.preventDefault();setModel(b.dataset.modelSet)}});
   function setGenre(g,user){root.dataset.genre=g;g=jwGenre();
     try{localStorage.setItem('jw-genre',g);if(history.replaceState){var q=g===modes()[0].id?'':'?genre='+g;history.replaceState(null,'',location.pathname+q+location.hash)}}catch(e){}
-    renderGenres();if(window.jwFiles)jwFiles();if(window.jwView)jwView()}
+    renderGenres();renderModels();if(window.jwFiles)jwFiles();if(window.jwView)jwView()}
   document.addEventListener('click',function(e){var b=e.target.closest('.genre');if(b)setGenre(b.dataset.genre,true)});
 
   /* ── корзина: старые версии файлов (files/archive). Новые висят в списке выше ── */
@@ -191,7 +204,7 @@
   function setLang(l){var d=l==='ru'?(window.JW_RU||{}):EN;root.lang=l;
     tr.forEach(function(el){var k=el.dataset.i18n;if(d[k]!=null)el.innerHTML=d[k]});
     lbtn.forEach(function(b){b.classList.toggle('on',b.dataset.lang===l)});
-    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();renderGenres();jwFiles();if(window.jwTlLab)jwTlLab();if(window.jwSubs)jwSubs();try{localStorage.setItem('jw-lang',l)}catch(e){}}
+    document.title=l==='ru'?'JooWoo ✧ для Tavo':'JooWoo ✧ for Tavo';jwSwap();renderGenres();renderModels();jwFiles();if(window.jwTlLab)jwTlLab();if(window.jwSubs)jwSubs();try{localStorage.setItem('jw-lang',l)}catch(e){}}
   lbtn.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
   setLang(root.lang==='ru'?'ru':'en');
   setGenre(root.dataset.genre||'');

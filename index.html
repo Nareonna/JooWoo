@@ -209,9 +209,11 @@ html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
 <!-- ═══ PRESET ═══ -->
 <section class="sec" id="preset" data-panel="preset" data-mode="realism">
   <header class="sec-head"><p class="kicker" data-i18n="pre.kicker">ii · preset</p><h2>Vesper 2.0.0</h2><p data-i18n="pre.lead">A preset where the character has a life of his own. He thinks before he answers, never writes for you, remembers what happened and reacts like a person — not like an assistant.</p></header>
+  <div class="mdl-wrap"><span class="mdl-k" data-i18n="md.k">Made for</span><div class="pill mdl" role="tablist" aria-label="Model" data-models hidden></div></div>
   <div class="preset reveal">
     <div class="pillars">
-      <div><span>☾</span><h4 data-i18n="p1.t">Thinks first</h4><p data-i18n="p1.d">A hidden plan before every reply: what is between you right now, what he wants, how the scene shifts by the last line.</p></div>
+      <div data-model="neon" hidden><span>☾</span><h4 data-i18n="p1n.t">Thinks on its own</h4><p data-i18n="p1n.d">Neon reasons by itself; the preset only points it at what matters: who heard what, whether closeness moved, how this reply differs from the last.</p></div>
+      <div data-model="argon"><span>☾</span><h4 data-i18n="p1.t">Thinks first</h4><p data-i18n="p1.d">A hidden plan before every reply: what is between you right now, what he wants, how the scene shifts by the last line.</p></div>
       <div><span>◐</span><h4 data-i18n="p2.t">His own life</h4><p data-i18n="p2.d">Work, people, plans, problems. He doesn't wait for you between messages, and with a stranger he never pushes into your day.</p></div>
       <div><span>✎</span><h4 data-i18n="p3.t">A living person</h4><p data-i18n="p3.d">Live speech everywhere — face to face, on the phone, in texts with his own typos. Local humour, busy hands, the ordinary cutting into big moments. Always inside his card.</p></div>
       <div><span>✧</span><h4 data-i18n="p4.t">No clichés</h4><p data-i18n="p4.d">A long list of stock phrases, gestures and endings the model avoids — plus a highlighter that marks them in chat.</p></div>
@@ -220,14 +222,31 @@ html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
       <div><span>♡</span><h4 data-i18n="p7.t">Adult scenes</h4><p data-i18n="p7.d">One intimacy core: if he wants to touch you, he does — one step per reply, and you decide. Detailed rules switch on by themselves. All participants are adults.</p></div>
       <div><span>⚙</span><h4 data-i18n="p8.t">Toggles</h4><p data-i18n="p8.d">Reply length, pace, speech register, swearing, cruel world, game over, first person — switch on only what you need.</p></div>
     </div>
-    <p class="hint center model" data-i18n="pre.model">Made for <b>Gemini 4 Argon</b>. Other models will run it, but the thinking, pacing and anti-cliché are tuned for Argon.</p>
-    <p class="hint center" data-i18n="pre.lang">One preset, two languages. Characters speak the language of their world — in Paris it’s “I told you in French”. Files follow the site language: switch to RU at the top for the Russian version.</p>
+    <p class="hint center model" data-model="argon" data-i18n="pre.model">Made for <b>Gemini 4 Argon</b>. Other models will run it, but the thinking, pacing and anti-cliché are tuned for Argon.</p>
+    <p class="hint center" data-model="argon" data-i18n="pre.lang">One preset, two languages. Characters speak the language of their world — in Paris it’s “I told you in French”. Files follow the site language: switch to RU at the top for the Russian version.</p>
     <a class="pair" href="https://hub.tavoai.dev/plugins/package/com.joowoo.shepot" target="_blank" rel="noopener">
       <span class="pair-ic"><img src="img/plugin-shepot.webp?v=3" alt=""><i>♡</i></span>
       <span class="pair-t"><small data-i18n="pair.k">best together</small><b><span data-i18n="pair.t">Vesper + Whisper</span></b><span data-i18n="pair.d">Whisper keeps the memory and the plot between scenes — with it the preset opens up completely: threads aren’t lost, promises come back, the story moves on its own.</span></span>
       <span class="pair-go"><span data-i18n="pair.btn">Get Whisper</span> <em>TavoHub ↗</em></span>
     </a>
-    <div class="dl center"><a class="btn" href="files/joowoo-preset-vesper-2.0.0.json" data-f="preset" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div><p class="vline center"><span class="ver" data-v="preset"></span></p>
+    <div data-model="argon"><div class="dl center"><a class="btn" href="files/joowoo-preset-vesper-2.0.0.json" data-f="preset" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div><p class="vline center"><span class="ver" data-v="preset"></span></p></div>
+    <div class="mdl-neon" data-model="neon" hidden>
+      <h3 class="mdl-h" data-i18n="pn.t">How the Neon version differs</h3>
+      <ul class="ticks mdl-diff">
+        <li data-i18n="pn.1">Neon thinks on its own, so there is no long hidden plan in the preset — less analysis, straight to the scene.</li>
+        <li data-i18n="pn.2">Fits any card world — fantasy, the past, non-humans. It never gives a character a job, phone or family the card doesn’t have.</li>
+        <li data-i18n="pn.3">A story clock: time moves as long as the scene really took, the date changes at midnight, no sudden jump to morning.</li>
+        <li data-i18n="pn.4">Stricter with repeats: it watches the model’s favourite words five replies back and never turns your words into a question.</li>
+      </ul>
+      <p class="hint center" data-i18n="pn.same">The themes, Core and the plugins are the same for both models.</p>
+      <div class="mdl-test" data-mtest>
+        <p class="kicker" data-i18n="pn.k">being tested</p>
+        <p class="mdl-test-t" data-i18n="pn.tt">Vesper for Neon is with the testers</p>
+        <p class="soon-d" data-i18n="pn.td">The files will appear here once the testers have checked it. News comes to Telegram first.</p>
+        <div class="dl center"><a class="btn ghost" href="https://t.me/joowoowa" target="_blank" rel="noopener">Telegram</a><button class="btn ghost" type="button" data-model-set="argon" data-i18n="pn.back">Take the Argon version</button></div>
+      </div>
+      <div data-mready hidden><div class="dl center"><a class="btn" href="#" data-f="preset-neon" download data-i18n="dl.preset">Download the preset</a><a class="btn ghost" href="#updates" data-i18n="pre.log">What's new</a></div><p class="vline center"><span class="ver" data-v="preset-neon"></span></p></div>
+    </div>
   </div>
 </section>
 
@@ -441,7 +460,7 @@ html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
 <dialog class="setup-dlg" id="setup" aria-labelledby="setup-h">
   <button class="dlg-x" type="button" aria-label="Close">×</button>
   <div class="dlg-in">
-<header class="sec-head"><p class="kicker" data-i18n="st.kicker">⚙ setup</p><h2 id="setup-h" data-i18n="st.title">Setting up Tavo</h2><p data-i18n="st.lead">Everything here is tuned for <b>Gemini 4 Argon</b> — the model the preset is made for. Names are as in Tavo’s English interface.</p></header>
+<header class="sec-head"><p class="kicker" data-i18n="st.kicker">⚙ setup</p><h2 id="setup-h" data-i18n="st.title">Setting up Tavo</h2><p data-i18n="st.lead">These settings are the same for both models; only the API parameters depend on the model. Names are as in Tavo’s English interface.</p></header>
   <div class="setup">
     <div class="st-must"><b data-i18n="st.m1t">In every chat</b><span data-i18n="st.m1">Chat settings → turn on <em>Advanced Rendering</em>. Without it plates, blocks and Stained Glass stay plain text.</span></div>
     <div class="st-grp"><h4 data-i18n="st.g1">Display settings</h4>
@@ -474,7 +493,9 @@ html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
       <div class="st-row"><div><b>Hide tool calls</b><p data-i18n="st.g5.2d">Calls still run, but don’t clutter the story.</p></div><span class="st-v on" data-i18n="st.g5.2v">On</span></div>
       <div class="st-row"><div><b>Web search API</b><p data-i18n="st.g5.3d">Any working search.</p></div><span class="st-v mute" data-i18n="st.g5.3v">Web Search API 1</span></div>
     </div>
-    <div class="st-api"><div class="st-api-h"><h4 data-i18n="st.api">API parameters · Gemini 4 Argon</h4><button class="btn ghost st-copy" type="button" data-i18n="st.copy">Copy</button></div>
+    <div class="st-api"><div class="mdl-wrap st-mdl"><span class="mdl-k" data-i18n="md.k">Made for</span><div class="pill mdl" role="tablist" aria-label="Model" data-models hidden></div></div>
+      <div class="st-neon" data-model="neon" hidden><h4 data-i18n="st.napi">API parameters · Gemini 4 Neon</h4><p class="soon-d" data-i18n="st.nsoon">The API parameters for Neon will be published together with its preset, after testing.</p></div>
+      <div data-model="argon"><div class="st-api-h"><h4 data-i18n="st.api">API parameters · Gemini 4 Argon</h4><button class="btn ghost st-copy" type="button" data-i18n="st.copy">Copy</button></div>
       <pre id="st-json">{
   &quot;max_tokens&quot;: 32768,
   &quot;extra_body&quot;: {
@@ -510,7 +531,7 @@ html:not([lang|="ru"]) .jw-ru, html[lang|="ru"] .jw-en { display: none; }
         <li data-i18n="st.a3"><code>max_tokens: 32768</code> — thinking counts toward this limit too, so don’t lower it below 16000.</li>
         <li data-i18n="st.a4"><code>safety_settings</code> — on Gemini 4 Argon the filters are already off by default; the block doesn’t hurt, it just makes it explicit.</li>
       </ul>
-    </div>
+    </div></div>
   </div>
   </div>
 </dialog>
