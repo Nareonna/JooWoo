@@ -487,3 +487,7 @@ html.jw-locked a.vr-dl[href^="files/"]::after{content:'🔒';position:absolute;r
 .gallery figure:hover img{transform:scale(1.025)}
 .gallery figcaption{padding:34px 16px 14px;font-size:11.5px}
 @media (max-width:700px){.gallery figure{flex-basis:100%!important}}
+
+/* Links within the Stained Glass card. */
+.plugin-link{color:inherit;text-decoration:underline;text-underline-offset:.2em}
+.plugin-link:hover,.plugin-link:focus-visible{color:var(--ink)}
